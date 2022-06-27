@@ -2,19 +2,26 @@ package Game;
 
 import java.awt.image.BufferedImage;
 import java.io.IOException;
-
 import javax.imageio.ImageIO;
 
 //可尝试使用单例
 public class ResourceManager {
+    public static BufferedImage background;
+    public static BufferedImage earth;
+
     public static BufferedImage playerShip_L,playerShip_n,playerShip_s;
     public static BufferedImage enemy_gun01,enemy_gun02,enemy_laser,enemy_art,enemy_boss;
     public static BufferedImage bullet_gun,bullet_laser01,bullet_laser02,bullet_art;
     public static BufferedImage bomb_LL,bomb_L,bomb_n,bomb_s;
 
-
     static{
         try {
+            //背景
+            background=ImageIO.read(ResourceManager.class.getClassLoader().getResourceAsStream("Image/background.png"));
+
+            //地球
+            earth=ImageIO.read(ResourceManager.class.getClassLoader().getResourceAsStream("Image/earth.png"));
+            
             //三种玩家飞船
             playerShip_L=ImageIO.read(ResourceManager.class.getClassLoader().getResourceAsStream("Image/player_L.png"));
             playerShip_n=ImageIO.read(ResourceManager.class.getClassLoader().getResourceAsStream("Image/player_n.png"));
@@ -33,13 +40,13 @@ public class ResourceManager {
             bullet_laser02=ImageIO.read(ResourceManager.class.getClassLoader().getResourceAsStream("Image/bullet_laser02.png"));
             bullet_art=ImageIO.read(ResourceManager.class.getClassLoader().getResourceAsStream("Image/bullet_artillery.png"));
 
-
             //四种爆炸
             bomb_LL=ImageIO.read(ResourceManager.class.getClassLoader().getResourceAsStream("Image/bomb_LL.png"));
             bomb_L=ImageIO.read(ResourceManager.class.getClassLoader().getResourceAsStream("Image/bomb_L.png"));
             bomb_n=ImageIO.read(ResourceManager.class.getClassLoader().getResourceAsStream("Image/bomb_n.png"));
             bomb_s=ImageIO.read(ResourceManager.class.getClassLoader().getResourceAsStream("Image/bomb_s.png"));
-        
+            
+
         } catch (IOException e) {
             e.printStackTrace();
         }

@@ -1,2 +1,6 @@
-#Ship count at initialization
-initShipCount=6
+#EnemyShip count at initialization
+gun01=10
+gun02=10
+laser=5
+art=5
+boss=1
