@@ -6,36 +6,44 @@ import java.util.Random;
 public class ShipEnemyGun02 extends ShipEnemy{
     private Random random = new Random();
 
-    public ShipEnemyGun02(int x, int y, GameFrame gf) {
+    public ShipEnemyGun02(){
+        this.code = "102";
+    }
 
-        image = ResourceManager.enemy_gun02;
-        imageBomb =ResourceManager.bomb_s;
+    public ShipEnemyGun02(int x, int y, GameFrame gf,int dieCode,boolean moving,boolean havesend) {
+
+        this.image = ResourceManager.enemy_gun02;
+        this.imageBomb =ResourceManager.bomb_s;
 
         this.x = x;
         this.y = y;
 
-        speed = 4;
+        this.speed = 4;
 
-        shieldValue = 100;
-        maxShieldValue = 100;
-        Armorthick  = 2;
-        hp          = 100;
-        maxHp = 100;
+        this.shieldValue = 100;
+        this.maxShieldValue = 100;
+        this.Armorthick  = 2;
+        this.hp          = 100;
+        this.maxHp = 100;
 
-        WIDTH  = image.getWidth();
-        HEIGHT = image.getHeight();
+        this.WIDTH  = image.getWidth();
+        this.HEIGHT = image.getHeight();
 
-        rect        = new Rectangle();
-        rect.x      = this.x;
-        rect.y      = this.y;
-        rect.width  = WIDTH;
-        rect.height = HEIGHT;
+        this.rect        = new Rectangle();
+        this.rect.x      = this.x;
+        this.rect.y      = this.y;
+        this.rect.width  = WIDTH;
+        this.rect.height = HEIGHT;
 
         this.gf = gf;
         this.frames=0;
         this.score=2;
 
-        this.code = 02;
+        this.code = "102";
+        this.dieCode = dieCode;
+
+        this.moving = moving;
+        this.havesend = havesend;
     }
 
     @Override
@@ -49,6 +57,9 @@ public class ShipEnemyGun02 extends ShipEnemy{
         paintHp(g);
         
         move();
+
+        rect.x=this.x;
+        rect.y=this.y;
 
         frames++;
     }
@@ -76,8 +87,7 @@ public class ShipEnemyGun02 extends ShipEnemy{
 
         boundsCheck();
 
-        rect.x=this.x;
-        rect.y=this.y;
+
 
         //随机开火
         if(frames >=6) {
@@ -97,7 +107,7 @@ public class ShipEnemyGun02 extends ShipEnemy{
     @Override
     public void fire() {
 
-        gf.enemyBullets.add(new BulletGun(this.x + this.WIDTH / 2, this.y + this.HEIGHT / 2, dir, group, gf));
+        gf.enemyBullets.add(new BulletGun(this.x + this.WIDTH / 2, this.y + this.HEIGHT / 2, dir, group, gf,false));
     }
 
     //二+4/4成几率往左

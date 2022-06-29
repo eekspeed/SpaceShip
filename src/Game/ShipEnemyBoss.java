@@ -6,10 +6,14 @@ import java.util.Random;
 public class ShipEnemyBoss extends ShipEnemy {
     private Random random = new Random();
 
-    public ShipEnemyBoss(int x, int y, GameFrame gf) {
+    public ShipEnemyBoss(){
+        this.code = "105";
+    }
 
-        image = ResourceManager.enemy_boss;
-        imageBomb = ResourceManager.bomb_LL;
+    public ShipEnemyBoss(int x, int y, GameFrame gf,int dieCode,boolean moving,boolean havesend) {
+
+        this.image = ResourceManager.enemy_boss;
+        this.imageBomb = ResourceManager.bomb_LL;
 
         this.x = x;
         this.y = y;
@@ -35,7 +39,11 @@ public class ShipEnemyBoss extends ShipEnemy {
         this.frames = 0;
         this.score = 100;
 
-        this.code = 05;
+        this.code = "105";
+        this.dieCode = dieCode;
+
+        this.moving = moving;
+        this.havesend = havesend;
     }
 
     @Override
@@ -49,6 +57,9 @@ public class ShipEnemyBoss extends ShipEnemy {
         paintHp(g);
 
         move();
+
+        rect.x = this.x;
+        rect.y = this.y;
 
         frames++;
     }
@@ -76,8 +87,7 @@ public class ShipEnemyBoss extends ShipEnemy {
 
         boundsCheck();
 
-        rect.x = this.x;
-        rect.y = this.y;
+
 
         // 随机开火
         if (frames >= 10) {
@@ -96,7 +106,7 @@ public class ShipEnemyBoss extends ShipEnemy {
 
     @Override
     public void fire() {
-        gf.enemyBullets.add(new BulletLaser(this.x + this.WIDTH / 2, this.y + this.HEIGHT / 2, dir, group, gf));
+        gf.enemyBullets.add(new BulletLaser(this.x + this.WIDTH / 2, this.y + this.HEIGHT / 2, dir, group, gf,false));
     }
 
     // 四+4/4成几率往左

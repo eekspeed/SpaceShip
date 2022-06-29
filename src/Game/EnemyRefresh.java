@@ -23,6 +23,8 @@ public class EnemyRefresh extends TimerTask {
 
     private Random rd;
 
+    private int dieCode = 0;
+
     public EnemyRefresh(GameFrame gf) {
 
         gun01 = 0;
@@ -45,13 +47,13 @@ public class EnemyRefresh extends TimerTask {
     public void run() {
 
         
-        if (gun01 <= maxGun01) {
-            gf.enemyShips.add(new ShipEnemyGun01(1400 + rd.nextInt(150), 50 + rd.nextInt(700), gf));
+        if (gun01 < maxGun01) {
+            gf.enemyShips.add(new ShipEnemyGun01(1400 + rd.nextInt(150), 50 + rd.nextInt(700), gf,dieCode++,true,false));
             gun01++;
         }
 
-        if (gun02 <= maxGun02) {
-            gf.enemyShips.add(new ShipEnemyGun02(1400 + rd.nextInt(150), 50 + rd.nextInt(700), gf));
+        if (gun02 < maxGun02) {
+            gf.enemyShips.add(new ShipEnemyGun02(1400 + rd.nextInt(150), 50 + rd.nextInt(700), gf,dieCode++,true,false));
             gun02++;
         }
 
@@ -64,13 +66,13 @@ public class EnemyRefresh extends TimerTask {
             }
         }
 
-        if (gun01 >= maxGun01 / 2 && laser <= maxLaser) {
-            gf.enemyShips.add(new ShipEnemyLaser(1400 + rd.nextInt(150), 50 + rd.nextInt(700), gf));
+        if (gun01 >= maxGun01 / 2 && laser < maxLaser) {
+            gf.enemyShips.add(new ShipEnemyLaser(1400 + rd.nextInt(150), 50 + rd.nextInt(700), gf,dieCode++,true,false));
             laser++;
         }
 
-        if (gun02 >= maxGun01 / 2 && art <= maxArt) {
-            gf.enemyShips.add(new ShipEnemyArt(1400 + rd.nextInt(150), 50 + rd.nextInt(700), gf));
+        if (gun02 >= maxGun01 / 2 && art < maxArt) {
+            gf.enemyShips.add(new ShipEnemyArt(1400 + rd.nextInt(150), 50 + rd.nextInt(700), gf,dieCode++,true,false));
             art++;
         }
 
@@ -82,9 +84,18 @@ public class EnemyRefresh extends TimerTask {
             }
         }
 
-        if (laser > maxLaser / 2 && boss <= maxBoss) {
-            gf.enemyShips.add(new ShipEnemyBoss(1400 + rd.nextInt(150), 50 + rd.nextInt(700), gf));
+        if (laser > maxLaser / 2 && boss < maxBoss) {
+            gf.enemyShips.add(new ShipEnemyBoss(1400 + rd.nextInt(150), 50 + rd.nextInt(700), gf,dieCode++,true,false));
             boss++;
+        }
+
+        // 敌机超过12个直接暂停刷新
+        while(gf.enemyShips.size() >= 12){
+            try {
+                Thread.sleep(5000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
         }
     }
 

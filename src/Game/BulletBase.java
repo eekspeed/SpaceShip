@@ -43,7 +43,14 @@ public class BulletBase {
     // 最大存活时间
     protected int maxFrames;
 
+    // 用于传输数据的类型代号
+    public String code;
+
+    // 判断该子弹存在信息是否已经发送
+    public boolean havesend;
+
     public BulletBase() {
+        this.havesend = false;
     }
 
     public void paint(Graphics g) {
@@ -64,10 +71,6 @@ public class BulletBase {
                 y += SPEED;
                 break;
         }
-
-        // 改变碰撞矩形
-        rect.x = this.x;
-        rect.y = this.y;
 
         // 边界检测
         if (x < 0 || y < 0 || x > GameFrame.GAME_WIDTH || y > GameFrame.GAME_HEIGHT) {

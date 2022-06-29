@@ -4,7 +4,11 @@ import java.awt.*;
 
 public class ShipPlayerN extends ShipPlayer {
 
-    public ShipPlayerN(int x, int y, GameFrame gf) {
+    public ShipPlayerN(){
+        this.code = "202";
+    }
+
+    public ShipPlayerN(int x, int y, GameFrame gf,int dieCode ,boolean moving,boolean havesend) {
 
         image = ResourceManager.playerShip_n;
         imageBomb =ResourceManager.bomb_L;
@@ -14,11 +18,11 @@ public class ShipPlayerN extends ShipPlayer {
 
         speed = 5;
 
-        shieldValue = 200;
-        maxShieldValue = 200;
+        shieldValue = 400;
+        maxShieldValue = 400;
         Armorthick  = 2;
-        hp          = 400;
-        maxHp = 400;
+        hp          = 800;
+        maxHp = 800;
 
         WIDTH  = image.getWidth();
         HEIGHT = image.getHeight();
@@ -31,6 +35,12 @@ public class ShipPlayerN extends ShipPlayer {
 
         this.gf = gf;
         this.frames=0;
+
+        this.code = "202";
+        this.dieCode = dieCode;
+
+        this.moving = moving;
+        this.havesend = havesend;
     }
 
     @Override
@@ -44,6 +54,9 @@ public class ShipPlayerN extends ShipPlayer {
         paintHp(g);
         
         move();
+
+        rect.x=this.x;
+        rect.y=this.y;
 
         frames++;
     }
@@ -71,13 +84,12 @@ public class ShipPlayerN extends ShipPlayer {
 
         boundsCheck();
 
-        rect.x=this.x;
-        rect.y=this.y;
+
     }
 
     @Override
     public void fire() {
-        gf.playerBullets.add(new BulletLaser(this.x + this.WIDTH / 2, this.y + this.HEIGHT / 2, dir, group, gf));
+        gf.playerBullets.add(new BulletLaser(this.x + this.WIDTH / 2, this.y + this.HEIGHT / 2, dir, group, gf,false));
     }
 
     

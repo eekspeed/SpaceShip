@@ -4,7 +4,12 @@ import java.awt.Graphics;
 import java.awt.Rectangle;
 
 public class BulletLaser extends BulletBase {
-    public BulletLaser(int xc,int yc,Dir dir,Group group,GameFrame gf) {
+
+    public BulletLaser(){
+        this.code = "11";
+    }
+
+    public BulletLaser(int xc,int yc,Dir dir,Group group,GameFrame gf,boolean havesend) {
         this.SPEED = 10;
 
         this.image = ResourceManager.bullet_laser01;
@@ -21,7 +26,7 @@ public class BulletLaser extends BulletBase {
         rect.width=this.WIDTH;
         rect.height=this.HEIGHT;
 
-        this.hurt=20;
+        this.hurt=50;
         this.pierce=5;//穿透同样决定子弹互相碰撞问题
 
         this.gf=gf;
@@ -32,6 +37,9 @@ public class BulletLaser extends BulletBase {
 
         this.frames = 0;
         this.maxFrames = 100;
+
+        this.code = "11";
+        this.havesend = havesend;
     }
 
     @Override
@@ -46,6 +54,9 @@ public class BulletLaser extends BulletBase {
         g.drawImage(image, x, y, null);
 
         move();
+
+        rect.x = this.x;
+        rect.y = this.y;
     }
 
 

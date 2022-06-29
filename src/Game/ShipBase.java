@@ -54,7 +54,17 @@ public class ShipBase {
     // 帧数
     protected int frames;
 
+    // 用于传输数据的类型代号
+    public String code;
+
+    // 自身代号（用于死亡信息删除）
+    public int dieCode;
+
+    // 判断该船存在信息是否已经发送
+    public boolean havesend;
+
     public ShipBase() {
+        this.havesend = false;
     }
 
     public void paint(Graphics g) {
@@ -67,16 +77,16 @@ public class ShipBase {
     }
 
     public void boundsCheck() {
-        if (this.x < 5) {
+        if (this.x < 5 && this.x > -10) {
             x = 5;
         }
-        if (this.y < 30) {
+        if (this.y < 30 && this.y > -10) {
             y = 30;
         }
-        if (this.x > GameFrame.GAME_WIDTH - this.WIDTH - 10) {
+        if (this.x > GameFrame.GAME_WIDTH - this.WIDTH - 10 && this.x < GameFrame.GAME_WIDTH + 10) {
             x = GameFrame.GAME_WIDTH - this.WIDTH - 10;
         }
-        if (this.y > GameFrame.GAME_HEIGHT - this.HEIGHT - 10) {
+        if (this.y > GameFrame.GAME_HEIGHT - this.HEIGHT - 10 && this.y < GameFrame.GAME_HEIGHT + 10) {
             y = GameFrame.GAME_HEIGHT - this.HEIGHT - 10;
         }
     }
@@ -93,11 +103,11 @@ public class ShipBase {
 
     public void paintShield(Graphics g) {
         g.setColor(Color.blue);
-        g.fillRect(x, y - 24, (int)(1.0*this.shieldValue / this.maxShieldValue * this.WIDTH), 3);
+        g.fillRect(x, y - 24, (int) (1.0 * this.shieldValue / this.maxShieldValue * this.WIDTH), 3);
     }
 
     public void paintHp(Graphics g) {
         g.setColor(Color.red);
-        g.fillRect(x, y - 18, (int)(1.0*this.hp / this.maxHp * this.WIDTH), 3);
+        g.fillRect(x, y - 18, (int) (1.0 * this.hp / this.maxHp * this.WIDTH), 3);
     }
 }

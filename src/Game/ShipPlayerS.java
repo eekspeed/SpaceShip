@@ -4,10 +4,14 @@ import java.awt.*;
 
 public class ShipPlayerS extends ShipPlayer {
 
-    public ShipPlayerS(int x, int y, GameFrame gf) {
+    public ShipPlayerS() {
+        this.code = "201";
+    }
+
+    public ShipPlayerS(int x, int y, GameFrame gf, int dieCode, boolean moving,boolean havesend) {
 
         image = ResourceManager.playerShip_s;
-        imageBomb =ResourceManager.bomb_n;
+        imageBomb = ResourceManager.bomb_n;
 
         this.x = x;
         this.y = y;
@@ -16,21 +20,27 @@ public class ShipPlayerS extends ShipPlayer {
 
         shieldValue = 200;
         maxShieldValue = 200;
-        Armorthick  = 2;
-        hp          = 400;
+        Armorthick = 2;
+        hp = 400;
         maxHp = 400;
 
-        WIDTH  = image.getWidth();
+        WIDTH = image.getWidth();
         HEIGHT = image.getHeight();
 
-        rect        = new Rectangle();
-        rect.x      = this.x;
-        rect.y      = this.y;
-        rect.width  = WIDTH;
+        rect = new Rectangle();
+        rect.x = this.x;
+        rect.y = this.y;
+        rect.width = WIDTH;
         rect.height = HEIGHT;
 
         this.gf = gf;
-        this.frames=0;
+        this.frames = 0;
+
+        this.code = "201";
+        this.dieCode = dieCode;
+
+        this.moving = moving;
+        this.havesend = havesend;
     }
 
     @Override
@@ -42,8 +52,11 @@ public class ShipPlayerS extends ShipPlayer {
         g.drawImage(this.image, this.x, this.y, null);
         paintShield(g);
         paintHp(g);
-        
+
         move();
+
+        rect.x = this.x;
+        rect.y = this.y;
 
         frames++;
     }
@@ -71,14 +84,12 @@ public class ShipPlayerS extends ShipPlayer {
 
         boundsCheck();
 
-        rect.x=this.x;
-        rect.y=this.y;
+
     }
 
     @Override
     public void fire() {
-        gf.playerBullets.add(new BulletLaser(this.x + this.WIDTH / 2, this.y + this.HEIGHT / 2, dir, group, gf));
+        gf.playerBullets.add(new BulletLaser(this.x + this.WIDTH / 2, this.y + this.HEIGHT / 2, dir, group, gf,false));
     }
-
 
 }

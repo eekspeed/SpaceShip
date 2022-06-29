@@ -4,7 +4,12 @@ import java.awt.Graphics;
 import java.awt.Rectangle;
 
 public class BulletGun extends BulletBase {
-    public BulletGun(int xc,int yc,Dir dir,Group group,GameFrame gf) {
+
+    public BulletGun() {
+        this.code = "10";
+    }
+
+    public BulletGun(int xc,int yc,Dir dir,Group group,GameFrame gf,boolean havesend) {
         this.SPEED = 6;
         
         this.image = ResourceManager.bullet_gun;
@@ -31,6 +36,9 @@ public class BulletGun extends BulletBase {
 
         this.frames = 0;
         this.maxFrames = 40;
+
+        this.code = "10";
+        this.havesend = havesend;
     }
 
     @Override
@@ -45,6 +53,9 @@ public class BulletGun extends BulletBase {
         g.drawImage(image, x, y, null);
     
         move();
+
+        rect.x = this.x;
+        rect.y = this.y;
     }
 
 

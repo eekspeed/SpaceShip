@@ -4,7 +4,12 @@ import java.awt.Graphics;
 import java.awt.Rectangle;
 
 public class BulletArt extends BulletBase {
-    public BulletArt(int xc,int yc,Dir dir,Group group,GameFrame gf) {
+
+    public BulletArt() {
+        this.code = "12";
+    }
+
+    public BulletArt(int xc,int yc,Dir dir,Group group,GameFrame gf,boolean havesend) {
         this.SPEED = 15;
 
         this.image = ResourceManager.bullet_art;
@@ -31,6 +36,9 @@ public class BulletArt extends BulletBase {
 
         this.frames = 0;
         this.maxFrames = 200;
+
+        this.code = "12";
+        this.havesend = havesend;
     }
 
     @Override
@@ -45,6 +53,10 @@ public class BulletArt extends BulletBase {
         g.drawImage(image, x, y, null);
 
         move();
+
+        // ¸Ä±äÅö×²¾ØÐÎ
+        rect.x = this.x;
+        rect.y = this.y;
     }
 
 

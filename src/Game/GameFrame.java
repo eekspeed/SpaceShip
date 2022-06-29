@@ -7,6 +7,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 public class GameFrame extends Frame {
@@ -21,6 +22,9 @@ public class GameFrame extends Frame {
 
     // 窗口当前状态
     public int X = 0;
+
+    //敌方飞船死亡信息（自身代号），频繁写入清空使用链表
+    List<Integer> enemyDie = new LinkedList<>();
 
     // 玩家飞船列表
     List<ShipPlayer> playerShips = new ArrayList<>();
@@ -47,8 +51,13 @@ public class GameFrame extends Frame {
     // 爆炸列表
     List<Bomb> bombs = new ArrayList<>();
 
+    // 由主机启用还是由客户端启用
+    int whoEnable;
+
     // 窗口
-    public GameFrame() {
+    public GameFrame(int whoEnable) {
+        this.whoEnable = whoEnable;
+
         setTitle("宇宙战舰物语");
         setSize(GAME_WIDTH, GAME_HEIGHT);
         setLocationRelativeTo(null);
@@ -102,7 +111,11 @@ public class GameFrame extends Frame {
         } else {
 
             // 碰撞检测
-            collidetest();
+            if(whoEnable==0){
+                collidetest();
+            } else {
+                pseudoCollidetest();
+            }
 
             // !画背景(背景必须最先！！！)
             paintBackground(g);
@@ -182,6 +195,9 @@ public class GameFrame extends Frame {
             for (int j = 0; j < playerShips.size(); j++) {
                 enemyBullets.get(i).collideWith(playerShips.get(j));
             }
+            for (int j = 0; j < secPlayerShips.size(); j++) {
+                enemyBullets.get(i).collideWith(secPlayerShips.get(j));
+            }
         }
 
         // 子弹碰撞检测
@@ -203,6 +219,53 @@ public class GameFrame extends Frame {
             }
         }
 
+    }
+
+    private void pseudoCollidetest() {
+        for (int i = 0; i < playerBullets.size(); i++) {
+            for (int j = 0; j < enemyShips.size(); j++) {
+
+                if(playerBullets.get(i).rect.intersects(enemyShips.get(j).rect)){
+                    playerBullets.get(i).die();
+                }
+
+            }
+        }
+
+        for (int i = 0; i < enemyBullets.size(); i++) {
+            for (int j = 0; j < playerShips.size(); j++) {
+
+                if(enemyBullets.get(i).rect.intersects(playerShips.get(j).rect)){
+                    enemyBullets.get(i).die();
+                }
+            }
+            for (int j = 0; j < secPlayerShips.size(); j++) {
+
+                if(enemyBullets.get(i).rect.intersects(secPlayerShips.get(j).rect)){
+                    enemyBullets.get(i).die();
+                }
+
+            }
+        }
+
+        // 子弹碰撞检测
+        for (int i = 0; i < playerBullets.size(); i++) {
+            for (int j = 0; j < enemyBullets.size(); j++) {
+                if (playerBullets.get(i).rect.intersects(enemyBullets.get(j).rect)) {
+                    playerBullets.get(i).pierce -= enemyBullets.get(j).pierce;
+                    enemyBullets.get(j).pierce -= playerBullets.get(i).pierce;
+
+                    if(playerBullets.get(i).pierce<=0){
+                        playerBullets.get(i).die();
+                    }
+
+                    if(enemyBullets.get(j).pierce<=0){
+                        enemyBullets.get(j).die();
+                    }
+
+                }
+            }
+        }
     }
 
     // 画背景方法

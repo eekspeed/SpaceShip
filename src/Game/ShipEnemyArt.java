@@ -4,38 +4,47 @@ import java.awt.*;
 import java.util.Random;
 
 public class ShipEnemyArt extends ShipEnemy {
+
     private Random random = new Random();
 
-    public ShipEnemyArt(int x, int y, GameFrame gf) {
+    public ShipEnemyArt() {
+        this.code = "104";
+    }
 
-        image = ResourceManager.enemy_art;
-        imageBomb = ResourceManager.bomb_n;
+    public ShipEnemyArt(int x, int y, GameFrame gf,int dieCode,boolean moving,boolean havesend) {
+
+        this.image = ResourceManager.enemy_art;
+        this.imageBomb = ResourceManager.bomb_n;
 
         this.x = x;
         this.y = y;
 
-        speed = 5;
+        this.speed = 5;
 
-        shieldValue = 300;
-        maxShieldValue = 300;
-        Armorthick = 5;
-        hp = 300;
-        maxHp = 300;
+        this.shieldValue = 300;
+        this.maxShieldValue = 300;
+        this.Armorthick = 5;
+        this.hp = 300;
+        this.maxHp = 300;
 
-        WIDTH = image.getWidth();
-        HEIGHT = image.getHeight();
+        this.WIDTH = image.getWidth();
+        this.HEIGHT = image.getHeight();
 
-        rect = new Rectangle();
-        rect.x = this.x;
-        rect.y = this.y;
-        rect.width = WIDTH;
-        rect.height = HEIGHT;
+        this.rect = new Rectangle();
+        this.rect.x = this.x;
+        this.rect.y = this.y;
+        this.rect.width = WIDTH;
+        this.rect.height = HEIGHT;
 
         this.gf = gf;
         this.frames = 0;
         this.score = 10;
 
-        this.code = 04;
+        this.code = "104";
+        this.dieCode = dieCode;
+
+        this.moving = moving;
+        this.havesend = havesend;
     }
 
     @Override
@@ -45,10 +54,14 @@ public class ShipEnemyArt extends ShipEnemy {
         }
 
         g.drawImage(this.image, this.x, this.y, null);
+
         paintShield(g);
         paintHp(g);
 
         move();
+
+        rect.x = this.x;
+        rect.y = this.y;
 
         frames++;
     }
@@ -76,8 +89,7 @@ public class ShipEnemyArt extends ShipEnemy {
 
         boundsCheck();
 
-        rect.x = this.x;
-        rect.y = this.y;
+
 
         // 随机开火
         if (frames >= 150) {
@@ -98,7 +110,7 @@ public class ShipEnemyArt extends ShipEnemy {
     public void fire() {
 
         // 传入子弹生成中心位置
-        gf.enemyBullets.add(new BulletArt(this.x + this.WIDTH / 2, this.y + this.HEIGHT / 2, dir, group, gf));
+        gf.enemyBullets.add(new BulletArt(this.x + this.WIDTH / 2, this.y + this.HEIGHT / 2, dir, group, gf,false));
 
     }
 
