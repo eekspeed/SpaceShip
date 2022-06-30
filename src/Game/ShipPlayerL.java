@@ -58,7 +58,9 @@ public class ShipPlayerL extends ShipPlayer {
         rect.x = this.x;
         rect.y = this.y;
 
-        frames++;
+        if(frames>0){
+            frames--;
+        }
     }
 
     @Override
@@ -88,7 +90,10 @@ public class ShipPlayerL extends ShipPlayer {
 
     @Override
     public void fire() {
-        gf.playerBullets.add(new BulletLaser(this.x + this.WIDTH / 2, this.y + this.HEIGHT / 2, dir, group, gf,false));
+        if(frames==0){
+            gf.playerBullets.add(new BulletLaser(this.x + this.WIDTH / 2, this.y + this.HEIGHT / 2, dir, group, gf,false));
+            frames+=10;
+        }
     }
 
 }

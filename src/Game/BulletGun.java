@@ -1,6 +1,5 @@
 package Game;
 
-import java.awt.Graphics;
 import java.awt.Rectangle;
 
 public class BulletGun extends BulletBase {
@@ -34,31 +33,18 @@ public class BulletGun extends BulletBase {
 
         this.living=true;
 
-        this.frames = 0;
-        this.maxFrames = 40;
-
         this.code = "10";
         this.havesend = havesend;
+
+        this.maxAngle = 10;
+        this.angle = 0;
+        this.range = 150;
+
+        this.tx = 0;
+        this.ty = 0;
+
+        this.moving = false;
     }
 
-    @Override
-    public void paint(Graphics g){
-        frames++;
-        framesCheck();
-
-        if (!living) {
-            remove();
-        }
-
-        g.drawImage(image, x, y, null);
     
-        move();
-
-        rect.x = this.x;
-        rect.y = this.y;
-    }
-
-
-
-
 }

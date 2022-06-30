@@ -125,6 +125,10 @@ public class GameFrame extends Frame {
                 g.setColor(Color.red);
                 g.setFont(new Font("黑体", Font.PLAIN, 20));
                 g.drawString("按Alt键将主舰升级为“中型战舰”", 500, 60);
+            } else if (score >= 120 && playerShipStyle == 1){
+                g.setColor(Color.red);
+                g.setFont(new Font("黑体", Font.PLAIN, 20));
+                g.drawString("按Alt键将主舰升级为“重型战舰”", 500, 60);
             }
 
             // 画分数
@@ -178,6 +182,14 @@ public class GameFrame extends Frame {
                 bombs.get(i).paint(g);
             }
 
+            // if(X==2){
+            //     win();
+            // }
+
+            // if(X==3){
+            //     gameover();
+            // }
+            
         }
 
     }
@@ -323,6 +335,9 @@ public class GameFrame extends Frame {
                     if (score >= 40 && playerShipStyle == 0) {
                         playerShipStyle = 1;
                         score -= 40;
+                    } else if (score >= 120 && playerShipStyle == 1) {
+                        playerShipStyle = 2;
+                        score -= 120;
                     }
                     break;
 

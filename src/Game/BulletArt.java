@@ -1,6 +1,5 @@
 package Game;
 
-import java.awt.Graphics;
 import java.awt.Rectangle;
 
 public class BulletArt extends BulletBase {
@@ -9,56 +8,42 @@ public class BulletArt extends BulletBase {
         this.code = "12";
     }
 
-    public BulletArt(int xc,int yc,Dir dir,Group group,GameFrame gf,boolean havesend) {
+    public BulletArt(int xc, int yc, Dir dir, Group group, GameFrame gf, boolean havesend) {
         this.SPEED = 15;
 
         this.image = ResourceManager.bullet_art;
 
-        this.x=xc-image.getWidth()/2;
-        this.y=yc-image.getHeight()/2;
-        this.dir=dir;
+        this.x = xc - image.getWidth() / 2;
+        this.y = yc - image.getHeight() / 2;
+        this.dir = dir;
 
         this.WIDTH = image.getWidth();
         this.HEIGHT = image.getHeight();
 
         this.rect = new Rectangle();
-        rect.width=this.WIDTH;
-        rect.height=this.HEIGHT;
+        rect.width = this.WIDTH;
+        rect.height = this.HEIGHT;
 
-        this.hurt=20;
-        this.pierce=6;//穿透同样决定子弹互相碰撞问题
+        this.hurt = 100;
+        this.pierce = 6;// 穿透同样决定子弹互相碰撞问题
 
-        this.gf=gf;
+        this.gf = gf;
 
-        this.group=group;
+        this.group = group;
 
-        this.living=true;
-
-        this.frames = 0;
-        this.maxFrames = 200;
+        this.living = true;
 
         this.code = "12";
         this.havesend = havesend;
+
+        this.maxAngle = 1;
+        this.angle = 0;
+        this.range = 1000;
+
+        this.tx = 0;
+        this.ty = 0;
+
+        this.moving = false;
     }
-
-    @Override
-    public void paint(Graphics g){
-        frames++;
-        framesCheck();
-
-        if (!living) {
-            remove();
-        }
-
-        g.drawImage(image, x, y, null);
-
-        move();
-
-        // 改变碰撞矩形
-        rect.x = this.x;
-        rect.y = this.y;
-    }
-
-
 
 }
