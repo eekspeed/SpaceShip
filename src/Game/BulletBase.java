@@ -204,7 +204,7 @@ public class BulletBase {
 
             if (this.FX > this.x) {
                 this.tx += this.SPEED * Math.sin(this.angle);
-            } else if (this.FY < this.x) {
+            } else if (this.FX < this.x) {
                 this.tx -= this.SPEED * Math.sin(this.angle);
             }
 
@@ -238,7 +238,6 @@ public class BulletBase {
 
             if (ship.hp <= 0) {
                 ship.die();
-                ship.Bomb();
                 this.pierce -= ship.Armorthick;
             } else {
                 this.die();
@@ -263,7 +262,6 @@ public class BulletBase {
 
             if (ship.hp <= 0) {
                 ship.die();
-                ship.Bomb();
                 this.pierce -= ship.Armorthick;
             } else {
                 this.die();

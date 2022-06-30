@@ -51,6 +51,7 @@ public class ShipEnemyArt extends ShipEnemy {
     public void paint(Graphics g) {
         if (!living) {
             gf.enemyShips.remove(this);
+            Bomb();
         }
 
         g.drawImage(this.image, this.x, this.y, null);
