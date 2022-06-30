@@ -9,7 +9,7 @@ public class BulletLaser extends BulletBase {
     }
 
     public BulletLaser(int xc, int yc, Dir dir, Group group, GameFrame gf, boolean havesend) {
-        this.SPEED = 10;
+        this.SPEED = 14;
 
         this.image = ResourceManager.bullet_laser01;
 
@@ -30,7 +30,7 @@ public class BulletLaser extends BulletBase {
             rect.height = 8;
         }
         
-        this.hurt = 50;
+        this.hurt = 30;
         this.pierce = 5;// 穿透同样决定子弹互相碰撞问题
 
         this.gf = gf;
@@ -42,7 +42,7 @@ public class BulletLaser extends BulletBase {
         this.code = "11";
         this.havesend = havesend;
 
-        this.maxAngle = 5;
+        this.maxAngle = 2;
         this.angle = 0;
         this.range = 1000;
 

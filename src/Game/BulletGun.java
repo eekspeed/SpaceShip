@@ -24,7 +24,7 @@ public class BulletGun extends BulletBase {
         rect.width=this.WIDTH;
         rect.height=this.HEIGHT;
 
-        this.hurt=4;
+        this.hurt=10;
         this.pierce=1;//穿透同样决定子弹互相碰撞问题
 
         this.gf=gf;

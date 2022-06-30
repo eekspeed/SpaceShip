@@ -120,16 +120,22 @@ public class GameFrame extends Frame {
             // !画背景(背景必须最先！！！)
             paintBackground(g);
 
-            // 积分升级，买舰队
+            // 积分升级
             if (score >= 40 && playerShipStyle == 0) {
                 g.setColor(Color.red);
                 g.setFont(new Font("黑体", Font.PLAIN, 20));
-                g.drawString("按Alt键将主舰升级为“中型战舰”", 500, 60);
+                g.drawString("按Alt键将主舰升级为“中型战舰”", 400, 60);
             } else if (score >= 120 && playerShipStyle == 1){
                 g.setColor(Color.red);
                 g.setFont(new Font("黑体", Font.PLAIN, 20));
-                g.drawString("按Alt键将主舰升级为“重型战舰”", 500, 60);
+                g.drawString("按Alt键将主舰升级为“重型战舰”", 400, 60);
             }
+
+            //? 买舰队
+            
+            // 升级武器
+            armsLevelUp(g);
+            
 
             // 画分数
             paintScore(g);
@@ -194,6 +200,31 @@ public class GameFrame extends Frame {
 
     }
 
+    private void armsLevelUp(Graphics g) {
+        g.setColor(Color.green);
+        g.setFont(new Font("黑体", Font.PLAIN, 20));
+
+        if(score >= 10 && ArmGun.level == 0){
+            g.drawString("按1键将弹幕“双联装机铳”升级为“三联装机铳”", 750, 60);
+        }
+
+        if(score >= 20 && ArmGun.level == 1){
+            g.drawString("按1键将弹幕“三联装机铳”升级为“四联装机铳”", 750, 60);
+        }
+
+        if(score >= 30 && ArmLaser.level == 0){
+            g.drawString("按2键将副炮“激光三门炮”升级为“激光五门炮”", 750, 90);
+        }
+
+        if(score >= 60 && ArmLaser.level == 1){
+            g.drawString("按2键将副炮“激光五门炮”升级为“激光七门炮”", 750, 90);
+        }
+
+        if(score >= 100 && ArmArt.level ==0){
+            g.drawString("按3键将主炮“电磁加农炮”升级为“电磁加农炮阵列”", 750, 120);
+        }
+    }
+
     // 碰撞检测方法
     private void collidetest() {
 
@@ -233,6 +264,7 @@ public class GameFrame extends Frame {
 
     }
 
+    // 用于客户端的伪碰撞，无伤害，撞上就消失
     private void pseudoCollidetest() {
         for (int i = 0; i < playerBullets.size(); i++) {
             for (int j = 0; j < enemyShips.size(); j++) {
@@ -341,6 +373,37 @@ public class GameFrame extends Frame {
                     }
                     break;
 
+                case KeyEvent.VK_1:
+                    if(score >= 10 && ArmGun.level == 0){
+                        ArmGun.level =1;
+                        score -= 10;
+                    }
+            
+                    if(score >= 20 && ArmGun.level == 1){
+                        ArmGun.level =2;
+                        score -= 20;
+                    }
+                    break;
+
+                case KeyEvent.VK_2:
+                    if(score >= 30 && ArmLaser.level == 0){
+                        ArmLaser.level =1;
+                        score -= 30;
+                    }
+            
+                    if(score >= 60 && ArmLaser.level == 1){
+                        ArmLaser.level =2;
+                        score -= 60;
+                    }
+                    break;
+
+                case KeyEvent.VK_3:
+                    if(score >= 100 && ArmArt.level == 0){
+                        ArmArt.level =1;
+                        score -= 100;
+                    }
+                    break;
+
                 default:
                     break;
             }
@@ -407,6 +470,10 @@ public class GameFrame extends Frame {
             if (e.getButton() == 1 && X == 0) {
                 X = 1;
                 repaint();
+            }
+
+            if (e.getButton() == 1) {
+                playerShips.get(playerShipStyle).fire(e.getX(),e.getY());
             }
         }
     }

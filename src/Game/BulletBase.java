@@ -148,7 +148,7 @@ public class BulletBase {
             }
 
             boundsCheck();
-            if (this.x > this.FX) {
+            if (this.x >= this.FX) {
                 die();
             }
 
@@ -170,7 +170,7 @@ public class BulletBase {
             }
 
             boundsCheck();
-            if (this.x < this.FX) {
+            if (this.x <= this.FX) {
                 die();
             }
 
@@ -192,7 +192,7 @@ public class BulletBase {
             }
 
             boundsCheck();
-            if (this.y < this.FY) {
+            if (this.y <= this.FY) {
                 die();
             }
 
@@ -214,7 +214,7 @@ public class BulletBase {
             }
 
             boundsCheck();
-            if (this.y > this.FY) {
+            if (this.y >= this.FY) {
                 die();
             }
 

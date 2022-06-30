@@ -8,7 +8,7 @@ public class ShipPlayerS extends ShipPlayer {
         this.code = "201";
     }
 
-    public ShipPlayerS(int x, int y, GameFrame gf, int dieCode, boolean moving,boolean havesend) {
+    public ShipPlayerS(int x, int y, GameFrame gf, int dieCode, boolean moving, boolean havesend) {
 
         image = ResourceManager.playerShip_s;
         imageBomb = ResourceManager.bomb_n;
@@ -34,31 +34,14 @@ public class ShipPlayerS extends ShipPlayer {
         rect.height = HEIGHT;
 
         this.gf = gf;
-        this.frames = 0;
+        this.framesSec = 0;
+        this.framesMain = 0;
 
         this.code = "201";
         this.dieCode = dieCode;
 
         this.moving = moving;
         this.havesend = havesend;
-    }
-
-    @Override
-    public void paint(Graphics g) {
-        if (!living) {
-            gf.playerShips.remove(this);
-        }
-
-        g.drawImage(this.image, this.x, this.y, null);
-        paintShield(g);
-        paintHp(g);
-
-        move();
-
-        rect.x = this.x;
-        rect.y = this.y;
-
-        frames++;
     }
 
     @Override
@@ -84,12 +67,16 @@ public class ShipPlayerS extends ShipPlayer {
 
         boundsCheck();
 
-
     }
 
     @Override
     public void fire() {
-        gf.playerBullets.add(new BulletLaser(this.x + this.WIDTH / 2, this.y + this.HEIGHT / 2, dir, group, gf,false));
+        if(framesSec<=0){
+            ArmSec.fire(this.x + this.WIDTH / 2, this.y + this.HEIGHT / 2, dir, gf);
+            framesSec+=40;
+        }
+        //gf.playerBullets.add(new BulletLaser(this.x + this.WIDTH / 2, this.y + this.HEIGHT / 2, dir, group, gf,false));
+       
     }
 
 }

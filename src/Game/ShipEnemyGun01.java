@@ -36,7 +36,8 @@ public class ShipEnemyGun01 extends ShipEnemy{
         this.rect.height = HEIGHT;
 
         this.gf = gf;
-        this.frames=0;
+        this.framesSec=0;
+        this.framesMain = 0;
         this.score=2;
 
         this.code = "101";
@@ -44,25 +45,6 @@ public class ShipEnemyGun01 extends ShipEnemy{
 
         this.moving = moving;
         this.havesend = havesend;
-    }
-
-    @Override
-    public void paint(Graphics g) {
-        if (!living) {
-            gf.enemyShips.remove(this);
-            Bomb();
-        }
-
-        g.drawImage(this.image, this.x, this.y, null);
-        paintShield(g);
-        paintHp(g);
-        
-        move();
-
-        rect.x=this.x;
-        rect.y=this.y;
-
-        frames++;
     }
 
     @Override
@@ -89,10 +71,10 @@ public class ShipEnemyGun01 extends ShipEnemy{
         boundsCheck();
 
         //Ëæ»ú¿ª»ð
-        if(frames >=6) {
+        if(framesSec >=6) {
             if (random.nextInt(100) > 90) {
                 this.fire();
-                frames=0;
+                framesSec=0;
             }
         }
 

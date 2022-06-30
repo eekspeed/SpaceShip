@@ -34,33 +34,14 @@ public class ShipPlayerL extends ShipPlayer {
         rect.height = HEIGHT;
 
         this.gf = gf;
-        this.frames = 0;
+        this.framesSec = 0;
+        this.framesMain = 0;
 
         this.code = "203";
         this.dieCode = dieCode;
 
         this.moving = moving;
         this.havesend = havesend;
-    }
-
-    @Override
-    public void paint(Graphics g) {
-        if (!living) {
-            gf.playerShips.remove(this);
-        }
-
-        g.drawImage(this.image, this.x, this.y, null);
-        paintShield(g);
-        paintHp(g);
-
-        move();
-
-        rect.x = this.x;
-        rect.y = this.y;
-
-        if(frames>0){
-            frames--;
-        }
     }
 
     @Override
@@ -90,9 +71,9 @@ public class ShipPlayerL extends ShipPlayer {
 
     @Override
     public void fire() {
-        if(frames==0){
+        if(framesSec<=0){
             gf.playerBullets.add(new BulletLaser(this.x + this.WIDTH / 2, this.y + this.HEIGHT / 2, dir, group, gf,false));
-            frames+=10;
+            framesSec+=10;
         }
     }
 

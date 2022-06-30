@@ -52,7 +52,8 @@ public class ShipBase {
     protected GameFrame gf;
 
     // 帧数
-    protected int frames;
+    protected int framesSec;
+    protected int framesMain;
 
     // 用于传输数据的类型代号
     public String code;
@@ -68,6 +69,22 @@ public class ShipBase {
     }
 
     public void paint(Graphics g) {
+        if (!living) {
+            gf.enemyShips.remove(this);
+            Bomb();
+        }
+
+        g.drawImage(this.image, this.x, this.y, null);
+        paintShield(g);
+        paintHp(g);
+        
+        move();
+
+        rect.x=this.x;
+        rect.y=this.y;
+        
+        framesSec++;
+        framesMain++;
     }
 
     public void move() {
