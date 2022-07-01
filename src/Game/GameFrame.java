@@ -9,6 +9,7 @@ import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Random;
 
 public class GameFrame extends Frame {
 
@@ -16,6 +17,8 @@ public class GameFrame extends Frame {
     public static final int GAME_HEIGHT = 800;
 
     int x1 = 0, x2 = GAME_WIDTH;
+
+    int temp;
 
     // É±µÐ»ý·Ö
     public int score = 0;
@@ -321,8 +324,9 @@ public class GameFrame extends Frame {
         for (int i = 0; i < playerBullets.size(); i++) {
             for (int j = 0; j < enemyBullets.size(); j++) {
                 if (playerBullets.get(i).rect.intersects(enemyBullets.get(j).rect)) {
+                    temp =playerBullets.get(i).pierce;
                     playerBullets.get(i).pierce -= enemyBullets.get(j).pierce;
-                    enemyBullets.get(j).pierce -= playerBullets.get(i).pierce;
+                    enemyBullets.get(j).pierce -= temp;
 
                     if (playerBullets.get(i).pierce <= 0) {
                         playerBullets.get(i).die();
@@ -512,12 +516,22 @@ public class GameFrame extends Frame {
         public void mouseClicked(MouseEvent e) {
             if (e.getButton() == 1 && X == 0) {
                 X = 1;
-                repaint();
-            }
+                Sound.stopSound();
+                Random rand = new Random();
 
-            if (e.getButton() == 1) {
+                if (rand.nextInt(3) == 0) {
+                    Sound.playSound("Sound/FightBGM_1.wav");
+                } else if (rand.nextInt(3) == 1) {
+                    Sound.playSound("Sound/FightBGM_2.wav");
+                } else {
+                    Sound.playSound("Sound/FightBGM_3.wav");
+                }
+
+                repaint();
+            } else if (e.getButton() == 1) {
                 playerShips.get(playerShipStyle).fire(e.getX(), e.getY());
             }
+
         }
     }
 

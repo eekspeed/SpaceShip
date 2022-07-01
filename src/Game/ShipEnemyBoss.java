@@ -48,6 +48,27 @@ public class ShipEnemyBoss extends ShipEnemy {
     }
 
     @Override
+    public void paint(Graphics g) {
+        if (!living) {
+            gf.enemyShips.remove(this);
+            Bomb();
+            Sound.playSound("Sound/BombBoss.wav");
+        }
+
+        g.drawImage(this.image, this.x, this.y, null);
+        paintShield(g);
+        paintHp(g);
+        
+        move();
+
+        rect.x=this.x;
+        rect.y=this.y;
+        
+        framesSec++;
+        framesMain++;
+    }
+
+    @Override
     public void move() {
         if (!moving) {
             return;
@@ -100,7 +121,8 @@ public class ShipEnemyBoss extends ShipEnemy {
 
     @Override
     public void fire() {
-        gf.enemyBullets.add(new BulletLaser(this.x + this.WIDTH / 2, this.y + this.HEIGHT / 2, dir, group, gf,false));
+        gf.enemyBullets.add(new BulletArt(this.x + this.WIDTH / 2, this.y + this.HEIGHT / 2, dir, group, gf,false));
+        gf.enemyBullets.add(new BulletArt(this.x + this.WIDTH / 2, this.y + this.HEIGHT / 2, dir, group, gf,false));
     }
 
     // 二+4/4成几率往左

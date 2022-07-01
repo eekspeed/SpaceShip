@@ -103,8 +103,8 @@ public class EnemyRefresh extends TimerTask {
         }
 
         // 击杀boss且宙域清空说明游戏胜利
-        if(boss==maxBoss && gf.enemyShips.size() == 0) {
-            gf.X=2;
+        if (boss == maxBoss && gf.enemyShips.size() == 0) {
+            gf.X = 2;
         }
 
     }

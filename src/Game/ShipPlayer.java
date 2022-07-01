@@ -14,10 +14,13 @@ public class ShipPlayer extends ShipBase {
     @Override
     public void paint(Graphics g) {
         if (!living) {
-            moving = false;
+            if(moving == true){
+                moving = false;
+                Sound.playSound("Sound/Death.wav");
+                gf.X = 3;
+            }
             y = -200;
             Bomb();
-            gf.X = 3;
         } else {
             g.drawImage(this.image, this.x, this.y, null);
 

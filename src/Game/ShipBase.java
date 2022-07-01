@@ -72,6 +72,7 @@ public class ShipBase {
         if (!living) {
             gf.enemyShips.remove(this);
             Bomb();
+            Sound.playSound("Sound/Bomb.wav");
         }
 
         g.drawImage(this.image, this.x, this.y, null);

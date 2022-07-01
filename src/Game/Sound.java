@@ -46,10 +46,6 @@ public class Sound {
     }
 
     public static void stopSound(){
-        try {
-			stream.close();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+			clip.close();
     }
 }
