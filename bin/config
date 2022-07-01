@@ -1,6 +1,6 @@
 #EnemyShip count at initialization
-gun01=10
-gun02=10
-laser=5
-art=5
-boss=1
+gun01=30
+gun02=30
+laser=15
+art=15
+boss=2

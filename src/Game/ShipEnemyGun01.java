@@ -18,13 +18,13 @@ public class ShipEnemyGun01 extends ShipEnemy{
         this.x = x;
         this.y = y;
 
-        this.speed = 4;
+        this.speed = 3;
 
-        this.shieldValue = 100;
-        this.maxShieldValue = 100;
-        this.Armorthick  = 1;
-        this.hp          = 100;
-        this.maxHp = 100;
+        this.shieldValue = 150;
+        this.maxShieldValue = 150;
+        this.Armorthick  = 2;
+        this.hp          = 150;
+        this.maxHp = 150;
 
         this.WIDTH  = image.getWidth();
         this.HEIGHT = image.getHeight();
@@ -38,7 +38,7 @@ public class ShipEnemyGun01 extends ShipEnemy{
         this.gf = gf;
         this.framesSec=0;
         this.framesMain = 0;
-        this.score=2;
+        this.score=3;
 
         this.code = "101";
         this.dieCode = dieCode;
@@ -87,7 +87,7 @@ public class ShipEnemyGun01 extends ShipEnemy{
 
     @Override
     public void fire() {
-
+        gf.enemyBullets.add(new BulletGun(this.x + this.WIDTH / 2, this.y + this.HEIGHT / 2, dir, group, gf,false));
         gf.enemyBullets.add(new BulletGun(this.x + this.WIDTH / 2, this.y + this.HEIGHT / 2, dir, group, gf,false));
     }
 

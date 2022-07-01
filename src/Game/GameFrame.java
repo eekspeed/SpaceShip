@@ -23,7 +23,7 @@ public class GameFrame extends Frame {
     // 窗口当前状态
     public int X = 0;
 
-    //敌方飞船死亡信息（自身代号），频繁写入清空使用链表
+    // 敌方飞船死亡信息（自身代号），频繁写入清空使用链表
     List<Integer> enemyDie = new LinkedList<>();
 
     // 玩家飞船列表
@@ -111,7 +111,7 @@ public class GameFrame extends Frame {
         } else {
 
             // 碰撞检测
-            if(whoEnable==0){
+            if (whoEnable == 0) {
                 collidetest();
             } else {
                 pseudoCollidetest();
@@ -125,17 +125,14 @@ public class GameFrame extends Frame {
                 g.setColor(Color.red);
                 g.setFont(new Font("黑体", Font.PLAIN, 20));
                 g.drawString("按Alt键将主舰升级为“中型战舰”", 400, 60);
-            } else if (score >= 120 && playerShipStyle == 1){
+            } else if (score >= 120 && playerShipStyle == 1) {
                 g.setColor(Color.red);
                 g.setFont(new Font("黑体", Font.PLAIN, 20));
                 g.drawString("按Alt键将主舰升级为“重型战舰”", 400, 60);
             }
 
-            //? 买舰队
-            
             // 升级武器
             armsLevelUp(g);
-            
 
             // 画分数
             paintScore(g);
@@ -188,40 +185,68 @@ public class GameFrame extends Frame {
                 bombs.get(i).paint(g);
             }
 
-            // if(X==2){
-            //     win();
-            // }
+            if (X == 2) {
+                win(g);
+            }
 
-            // if(X==3){
-            //     gameover();
-            // }
-            
+            if (X == 3) {
+                gameover(g);
+            }
+
         }
 
+    }
+
+    private void gameover(Graphics g) {
+        g.setColor(Color.white);
+        g.setFont(new Font("微软雅黑", Font.PLAIN, 60));
+        g.drawString("主舰损毁！您失败了！", 550, 400);
+    }
+
+    private void win(Graphics g) {
+        g.setColor(Color.yellow);
+        g.setFont(new Font("微软雅黑", Font.PLAIN, 60));
+        g.drawString("宙域清空！您胜利了！", 550, 400);
     }
 
     private void armsLevelUp(Graphics g) {
         g.setColor(Color.green);
         g.setFont(new Font("黑体", Font.PLAIN, 20));
 
-        if(score >= 10 && ArmGun.level == 0){
+        if (score >= 20 && ArmGun.level == 0) {
             g.drawString("按1键将弹幕“双联装机铳”升级为“三联装机铳”", 750, 60);
         }
 
-        if(score >= 20 && ArmGun.level == 1){
+        if (score >= 40 && ArmGun.level == 1) {
             g.drawString("按1键将弹幕“三联装机铳”升级为“四联装机铳”", 750, 60);
         }
 
-        if(score >= 30 && ArmLaser.level == 0){
+        if (score >= 50 && ArmLaser.level == 0) {
             g.drawString("按2键将副炮“激光三门炮”升级为“激光五门炮”", 750, 90);
         }
 
-        if(score >= 60 && ArmLaser.level == 1){
+        if (score >= 80 && ArmLaser.level == 1) {
             g.drawString("按2键将副炮“激光五门炮”升级为“激光七门炮”", 750, 90);
         }
 
-        if(score >= 100 && ArmArt.level ==0){
+        if (score >= 150 && ArmArt.level == 0) {
             g.drawString("按3键将主炮“电磁加农炮”升级为“电磁加农炮阵列”", 750, 120);
+        }
+
+        if (score >= 80 && ArmEngine.level == 0) {
+            g.drawString("按4键将引擎“核裂变引擎”升级为“核聚变引擎”", 750, 150);
+        }
+
+        if (score >= 120 && ArmEngine.level == 1) {
+            g.drawString("按4键将引擎“核聚变引擎”升级为“冷核聚变引擎”", 750, 150);
+        }
+
+        if (score >= 160 && ArmEngine.level == 2) {
+            g.drawString("按4键将引擎“冷核聚变引擎”升级为“反物质引擎”", 750, 150);
+        }
+
+        if (score >= 200 && ArmEngine.level == 3) {
+            g.drawString("按4键将引擎“反物质引擎”升级为“零点引擎”", 750, 150);
         }
     }
 
@@ -250,11 +275,11 @@ public class GameFrame extends Frame {
                     playerBullets.get(i).pierce -= enemyBullets.get(j).pierce;
                     enemyBullets.get(j).pierce -= playerBullets.get(i).pierce;
 
-                    if(playerBullets.get(i).pierce<=0){
+                    if (playerBullets.get(i).pierce <= 0) {
                         playerBullets.get(i).die();
                     }
 
-                    if(enemyBullets.get(j).pierce<=0){
+                    if (enemyBullets.get(j).pierce <= 0) {
                         enemyBullets.get(j).die();
                     }
 
@@ -269,7 +294,7 @@ public class GameFrame extends Frame {
         for (int i = 0; i < playerBullets.size(); i++) {
             for (int j = 0; j < enemyShips.size(); j++) {
 
-                if(playerBullets.get(i).rect.intersects(enemyShips.get(j).rect)){
+                if (playerBullets.get(i).rect.intersects(enemyShips.get(j).rect)) {
                     playerBullets.get(i).die();
                 }
 
@@ -279,13 +304,13 @@ public class GameFrame extends Frame {
         for (int i = 0; i < enemyBullets.size(); i++) {
             for (int j = 0; j < playerShips.size(); j++) {
 
-                if(enemyBullets.get(i).rect.intersects(playerShips.get(j).rect)){
+                if (enemyBullets.get(i).rect.intersects(playerShips.get(j).rect)) {
                     enemyBullets.get(i).die();
                 }
             }
             for (int j = 0; j < secPlayerShips.size(); j++) {
 
-                if(enemyBullets.get(i).rect.intersects(secPlayerShips.get(j).rect)){
+                if (enemyBullets.get(i).rect.intersects(secPlayerShips.get(j).rect)) {
                     enemyBullets.get(i).die();
                 }
 
@@ -299,11 +324,11 @@ public class GameFrame extends Frame {
                     playerBullets.get(i).pierce -= enemyBullets.get(j).pierce;
                     enemyBullets.get(j).pierce -= playerBullets.get(i).pierce;
 
-                    if(playerBullets.get(i).pierce<=0){
+                    if (playerBullets.get(i).pierce <= 0) {
                         playerBullets.get(i).die();
                     }
 
-                    if(enemyBullets.get(j).pierce<=0){
+                    if (enemyBullets.get(j).pierce <= 0) {
                         enemyBullets.get(j).die();
                     }
 
@@ -374,33 +399,51 @@ public class GameFrame extends Frame {
                     break;
 
                 case KeyEvent.VK_1:
-                    if(score >= 10 && ArmGun.level == 0){
-                        ArmGun.level =1;
+                    if (score >= 10 && ArmGun.level == 0) {
+                        ArmGun.level = 1;
                         score -= 10;
-                    }
-            
-                    if(score >= 20 && ArmGun.level == 1){
-                        ArmGun.level =2;
+                    } else if (score >= 20 && ArmGun.level == 1) {
+                        ArmGun.level = 2;
                         score -= 20;
                     }
                     break;
 
                 case KeyEvent.VK_2:
-                    if(score >= 30 && ArmLaser.level == 0){
-                        ArmLaser.level =1;
+                    if (score >= 30 && ArmLaser.level == 0) {
+                        ArmLaser.level = 1;
                         score -= 30;
-                    }
-            
-                    if(score >= 60 && ArmLaser.level == 1){
-                        ArmLaser.level =2;
+                    } else if (score >= 60 && ArmLaser.level == 1) {
+                        ArmLaser.level = 2;
                         score -= 60;
                     }
                     break;
 
                 case KeyEvent.VK_3:
-                    if(score >= 100 && ArmArt.level == 0){
-                        ArmArt.level =1;
+                    if (score >= 100 && ArmArt.level == 0) {
+                        ArmArt.level = 1;
                         score -= 100;
+                    }
+                    break;
+
+                case KeyEvent.VK_4:
+                    if (score >= 80 && ArmEngine.level == 0) {
+                        ArmEngine.level = 1;
+                        score -= 80;
+                    }
+
+                    if (score >= 120 && ArmEngine.level == 1) {
+                        ArmEngine.level = 2;
+                        score -= 120;
+                    }
+
+                    if (score >= 160 && ArmEngine.level == 2) {
+                        ArmEngine.level = 3;
+                        score -= 160;
+                    }
+
+                    if (score >= 200 && ArmEngine.level == 3) {
+                        ArmEngine.level = 4;
+                        score -= 200;
                     }
                     break;
 
@@ -473,7 +516,7 @@ public class GameFrame extends Frame {
             }
 
             if (e.getButton() == 1) {
-                playerShips.get(playerShipStyle).fire(e.getX(),e.getY());
+                playerShips.get(playerShipStyle).fire(e.getX(), e.getY());
             }
         }
     }

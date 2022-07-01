@@ -115,10 +115,19 @@ public class BulletBombDataThread implements Runnable {
         for (int i = 0; i < gf.playerBullets.size(); i++) {
 
             if (gf.playerBullets.get(i).havesend == false) {
-                temp += (gf.playerBullets.get(i).code + " "
-                        + gf.playerBullets.get(i).x + " "
-                        + gf.playerBullets.get(i).y + " "
-                        + gf.playerBullets.get(i).dir + " ");
+
+                if (gf.playerBullets.get(i).code.equals(bArt.code)) {
+                    temp += (gf.playerBullets.get(i).x + " "
+                            + gf.playerBullets.get(i).y + " "
+                            + gf.playerBullets.get(i).FX + " "
+                            + gf.playerBullets.get(i).FY + " ");
+                } else {
+                    temp += (gf.playerBullets.get(i).code + " "
+                            + gf.playerBullets.get(i).x + " "
+                            + gf.playerBullets.get(i).y + " "
+                            + gf.playerBullets.get(i).dir + " ");
+                }
+
                 gf.playerBullets.get(i).havesend = true;
             }
 
@@ -140,19 +149,17 @@ public class BulletBombDataThread implements Runnable {
         }
 
         if (sign == 0) {
-            
+
             dataSplit = data.split(" ");
 
-            if(dataSplit[0].length()!=1){
+            if (dataSplit[0].length() != 1) {
                 readPlayerBullets();
             }
-            
-            
 
         } else {
             tempSplit = data.split("\\|");
 
-            if(tempSplit[0].length()!=1){
+            if (tempSplit[0].length() != 1) {
 
                 dataSplit = tempSplit[0].split(" ");
 
@@ -160,13 +167,11 @@ public class BulletBombDataThread implements Runnable {
 
             }
 
-            if(tempSplit[1].length()!=1){
+            if (tempSplit[1].length() != 1) {
                 dataSplit = tempSplit[1].split(" ");
 
                 readPlayerBullets();
             }
-
-            
 
         }
     }
@@ -176,39 +181,43 @@ public class BulletBombDataThread implements Runnable {
 
             if (dataSplit[i].equals(bArt.code)) {
                 gf.enemyBullets.add(new BulletArt(Integer.parseInt(dataSplit[i + 1]),
-                        Integer.parseInt(dataSplit[i + 2]), Dir.getDir(dataSplit[i + 3]), Group.Bad, gf,true));
+                        Integer.parseInt(dataSplit[i + 2]), Dir.getDir(dataSplit[i + 3]), Group.Bad, gf, true));
             }
 
             if (dataSplit[i].equals(bGun.code)) {
                 gf.enemyBullets.add(new BulletGun(Integer.parseInt(dataSplit[i + 1]),
-                        Integer.parseInt(dataSplit[i + 2]), Dir.getDir(dataSplit[i + 3]), Group.Bad, gf,true));
+                        Integer.parseInt(dataSplit[i + 2]), Dir.getDir(dataSplit[i + 3]), Group.Bad, gf, true));
             }
 
             if (dataSplit[i].equals(bLaser.code)) {
                 gf.enemyBullets.add(new BulletLaser(Integer.parseInt(dataSplit[i + 1]),
-                        Integer.parseInt(dataSplit[i + 2]), Dir.getDir(dataSplit[i + 3]), Group.Bad, gf,true));
+                        Integer.parseInt(dataSplit[i + 2]), Dir.getDir(dataSplit[i + 3]), Group.Bad, gf, true));
             }
 
         }
     }
 
+    // 在玩家子弹信息中先检测其他，未检测到的就是主炮子弹信息
     private void readPlayerBullets() {
 
         for (int i = 0; i < dataSplit.length; i += 4) {
 
-            if (dataSplit[i].equals(bArt.code)) {
-                gf.playerBullets.add(new BulletArt(Integer.parseInt(dataSplit[i + 1]),
-                        Integer.parseInt(dataSplit[i + 2]), Dir.getDir(dataSplit[i + 3]), Group.Good, gf,true));
-            }
-
             if (dataSplit[i].equals(bGun.code)) {
-                gf.playerBullets.add(new BulletGun(Integer.parseInt(dataSplit[i + 1]),
-                        Integer.parseInt(dataSplit[i + 2]), Dir.getDir(dataSplit[i + 3]), Group.Good, gf,true));
-            }
 
-            if (dataSplit[i].equals(bLaser.code)) {
+                gf.playerBullets.add(new BulletGun(Integer.parseInt(dataSplit[i + 1]),
+                        Integer.parseInt(dataSplit[i + 2]), Dir.getDir(dataSplit[i + 3]), Group.Good, gf, true));
+
+            } else if (dataSplit[i].equals(bLaser.code)) {
+
                 gf.playerBullets.add(new BulletLaser(Integer.parseInt(dataSplit[i + 1]),
-                        Integer.parseInt(dataSplit[i + 2]), Dir.getDir(dataSplit[i + 3]), Group.Good, gf,true));
+                        Integer.parseInt(dataSplit[i + 2]), Dir.getDir(dataSplit[i + 3]), Group.Good, gf, true));
+
+            } else {
+
+                gf.playerBullets.add(new BulletArt(Integer.parseInt(dataSplit[i]),
+                        Integer.parseInt(dataSplit[i + 1]), Group.Good, gf, true, Integer.parseInt(dataSplit[i + 2]),
+                        Integer.parseInt(dataSplit[i + 3])));
+
             }
 
         }

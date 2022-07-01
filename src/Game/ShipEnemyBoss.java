@@ -18,7 +18,7 @@ public class ShipEnemyBoss extends ShipEnemy {
         this.x = x;
         this.y = y;
 
-        speed = 2;
+        speed = 1;
 
         shieldValue = 2000;
         maxShieldValue = 2000;
@@ -70,7 +70,18 @@ public class ShipEnemyBoss extends ShipEnemy {
 
         boundsCheck();
 
+        // 自动开火
+        if (random.nextInt(100) > 90) {
+            for(int i = 0; i <5;i++){
+                gf.enemyBullets.add(new BulletGun(this.x + this.WIDTH / 2, this.y + this.HEIGHT / 2, dir, group, gf,false));
+            }
+        }
 
+        if (random.nextInt(100) > 95) {
+            for(int i = 0; i <4;i++){
+                gf.enemyBullets.add(new BulletLaser(this.x + this.WIDTH / 2, this.y + this.HEIGHT / 2, dir, group, gf,false));
+            }
+        }
 
         // 随机开火
         if (framesSec >= 10) {
@@ -92,9 +103,9 @@ public class ShipEnemyBoss extends ShipEnemy {
         gf.enemyBullets.add(new BulletLaser(this.x + this.WIDTH / 2, this.y + this.HEIGHT / 2, dir, group, gf,false));
     }
 
-    // 四+4/4成几率往左
+    // 二+4/4成几率往左
     private void randomDir() {
-        if (random.nextInt(5) > 2) {
+        if (random.nextInt(5) > 3) {
             this.dir = Dir.L;
             return;
         }

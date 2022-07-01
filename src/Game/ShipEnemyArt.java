@@ -19,13 +19,13 @@ public class ShipEnemyArt extends ShipEnemy {
         this.x = x;
         this.y = y;
 
-        this.speed = 5;
+        this.speed = 2;
 
-        this.shieldValue = 300;
-        this.maxShieldValue = 300;
-        this.Armorthick = 5;
-        this.hp = 300;
-        this.maxHp = 300;
+        this.shieldValue = 450;
+        this.maxShieldValue = 450;
+        this.Armorthick = 10;
+        this.hp = 450;
+        this.maxHp = 450;
 
         this.WIDTH = image.getWidth();
         this.HEIGHT = image.getHeight();
@@ -39,7 +39,7 @@ public class ShipEnemyArt extends ShipEnemy {
         this.gf = gf;
         this.framesSec = 0;
         this.framesMain = 0;
-        this.score = 10;
+        this.score = 30;
 
         this.code = "104";
         this.dieCode = dieCode;
@@ -71,10 +71,17 @@ public class ShipEnemyArt extends ShipEnemy {
 
         boundsCheck();
 
+        // 自动开火
 
+        if (random.nextInt(100) > 95) {
+            for(int i = 0; i <4;i++){
+                gf.enemyBullets.add(new BulletGun(this.x + this.WIDTH / 2, this.y + this.HEIGHT / 2, dir, group, gf,false));
+            }
+        }
+        
 
         // 随机开火
-        if (framesSec >= 150) {
+        if (framesSec >= 80) {
             if (random.nextInt(100) > 90) {
                 this.fire();
                 framesSec = 0;
@@ -91,7 +98,6 @@ public class ShipEnemyArt extends ShipEnemy {
     @Override
     public void fire() {
 
-        // 传入子弹生成中心位置
         gf.enemyBullets.add(new BulletArt(this.x + this.WIDTH / 2, this.y + this.HEIGHT / 2, dir, group, gf,false));
 
     }

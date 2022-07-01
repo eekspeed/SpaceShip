@@ -4,14 +4,14 @@ import java.awt.*;
 
 public class ShipPlayerN extends ShipPlayer {
 
-    public ShipPlayerN(){
+    public ShipPlayerN() {
         this.code = "202";
     }
 
-    public ShipPlayerN(int x, int y, GameFrame gf,int dieCode ,boolean moving,boolean havesend) {
+    public ShipPlayerN(int x, int y, GameFrame gf, int dieCode, boolean moving, boolean havesend) {
 
         image = ResourceManager.playerShip_n;
-        imageBomb =ResourceManager.bomb_L;
+        imageBomb = ResourceManager.bomb_L;
 
         this.x = x;
         this.y = y;
@@ -20,21 +20,21 @@ public class ShipPlayerN extends ShipPlayer {
 
         shieldValue = 400;
         maxShieldValue = 400;
-        Armorthick  = 2;
-        hp          = 800;
+        Armorthick = 2;
+        hp = 800;
         maxHp = 800;
 
-        WIDTH  = image.getWidth();
+        WIDTH = image.getWidth();
         HEIGHT = image.getHeight();
 
-        rect        = new Rectangle();
-        rect.x      = this.x;
-        rect.y      = this.y;
-        rect.width  = WIDTH;
+        rect = new Rectangle();
+        rect.x = this.x;
+        rect.y = this.y;
+        rect.width = WIDTH;
         rect.height = HEIGHT;
 
         this.gf = gf;
-        this.framesSec=0;
+        this.framesSec = 0;
         this.framesMain = 0;
 
         this.code = "202";
@@ -67,16 +67,16 @@ public class ShipPlayerN extends ShipPlayer {
 
         boundsCheck();
 
-
     }
 
     @Override
     public void fire() {
-        if(framesSec<=0){
-            gf.playerBullets.add(new BulletLaser(this.x + this.WIDTH / 2, this.y + this.HEIGHT / 2, dir, group, gf,false));
-            framesSec+=10;
+        if (framesSec <= 0) {
+            if(shieldValue>30){
+                shieldValue = ArmSec.fire(this.x + this.WIDTH / 2, this.y + this.HEIGHT / 2, dir, gf, shieldValue);
+                framesSec += 5;
+            }
         }
     }
 
-    
 }

@@ -92,8 +92,21 @@ public class BulletBase {
 
         g.drawImage(this.image, this.x, this.y, null);
 
-        this.rect.x = this.x;
-        this.rect.y = this.y;
+        rectmove();
+    }
+
+    public void rectmove() {
+        if(this.rect.width==this.WIDTH){
+            this.rect.x = this.x;
+        } else {
+            this.rect.x = this.x+this.WIDTH/2-this.rect.width/2;
+        }
+
+        if(this.rect.height==this.HEIGHT){
+            this.rect.y = this.y;
+        } else {
+            this.rect.y = this.y+this.HEIGHT/2-this.rect.height/2;
+        }
     }
 
     public void changeImage() {

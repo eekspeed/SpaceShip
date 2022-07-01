@@ -3,42 +3,42 @@ package Game;
 import java.awt.*;
 import java.util.Random;
 
-public class ShipEnemyLaser extends ShipEnemy{
+public class ShipEnemyLaser extends ShipEnemy {
     private Random random = new Random();
 
     public ShipEnemyLaser() {
         this.code = "103";
     }
 
-    public ShipEnemyLaser(int x, int y, GameFrame gf,int dieCode,boolean moving,boolean havesend) {
+    public ShipEnemyLaser(int x, int y, GameFrame gf, int dieCode, boolean moving, boolean havesend) {
 
         this.image = ResourceManager.enemy_laser;
-        this.imageBomb =ResourceManager.bomb_n;
+        this.imageBomb = ResourceManager.bomb_n;
 
         this.x = x;
         this.y = y;
 
-        this.speed = 5;
+        this.speed = 3;
 
-        this.shieldValue = 100;
-        this.maxShieldValue = 100;
-        this.Armorthick  = 5;
-        this.hp          = 100;
-        this.maxHp = 100;
+        this.shieldValue = 200;
+        this.maxShieldValue = 200;
+        this.Armorthick = 5;
+        this.hp = 200;
+        this.maxHp = 200;
 
-        this.WIDTH  = image.getWidth();
+        this.WIDTH = image.getWidth();
         this.HEIGHT = image.getHeight();
 
-        this.rect        = new Rectangle();
-        this.rect.x      = this.x;
-        this.rect.y      = this.y;
-        this.rect.width  = WIDTH;
+        this.rect = new Rectangle();
+        this.rect.x = this.x;
+        this.rect.y = this.y;
+        this.rect.width = WIDTH;
         this.rect.height = HEIGHT;
 
         this.gf = gf;
-        this.framesSec=0;
+        this.framesSec = 0;
         this.framesMain = 0;
-        this.score=10;
+        this.score = 20;
 
         this.code = "103";
         this.dieCode = dieCode;
@@ -70,41 +70,42 @@ public class ShipEnemyLaser extends ShipEnemy{
 
         boundsCheck();
 
-
-
-        //随机开火
-        if(framesSec >=30) {
-            if (random.nextInt(100) > 90) {
+        // 随机开火
+        if (framesSec >= 15) {
+            if (random.nextInt(100) > 0) {
                 this.fire();
-                framesSec=0;
+                framesSec -= 15;
+            } else {
+                this.fire();
+                this.fire();
+                this.fire();
+                this.fire();
+                framesSec = 0;
             }
         }
 
-        //随机变向
+        // 随机变向
         if (random.nextInt(100) > 95) {
             randomDir();
         }
-        
+
     }
 
     @Override
     public void fire() {
-
-        gf.enemyBullets.add(new BulletLaser(this.x + this.WIDTH / 2, this.y + this.HEIGHT / 2, dir, group, gf,false));
+        for (int i = 0; i < 5; i++) {
+            gf.enemyBullets
+                    .add(new BulletLaser(this.x + this.WIDTH / 2, this.y + this.HEIGHT / 2, dir, group, gf, false));
+        }
     }
 
-    //二+4/4成几率往左
+    // 二+4/4成几率往左
     private void randomDir() {
-        if(random.nextInt(5)>3){
-            this.dir=Dir.L;
+        if (random.nextInt(5) > 3) {
+            this.dir = Dir.L;
             return;
         }
-        this.dir=Dir.values()[random.nextInt(4)];
+        this.dir = Dir.values()[random.nextInt(4)];
     }
 
-
-
-
 }
-
-

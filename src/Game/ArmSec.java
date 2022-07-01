@@ -2,10 +2,10 @@ package Game;
 
 public class ArmSec {
 
-    public static void fire(int x, int y, Dir dir, GameFrame gf) {
+    public static int fire(int x, int y, Dir dir, GameFrame gf, int sV) {
         if (ArmLaser.enable == true) {
-            ArmLaser.fire(x,y,dir,gf);
+            sV = ArmLaser.fire(x, y, dir, gf, sV);
         }
-
+        return sV;
     }
 }

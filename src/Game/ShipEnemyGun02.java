@@ -18,13 +18,13 @@ public class ShipEnemyGun02 extends ShipEnemy{
         this.x = x;
         this.y = y;
 
-        this.speed = 4;
+        this.speed = 6;
 
-        this.shieldValue = 100;
-        this.maxShieldValue = 100;
-        this.Armorthick  = 2;
-        this.hp          = 100;
-        this.maxHp = 100;
+        this.shieldValue = 90;
+        this.maxShieldValue = 90;
+        this.Armorthick  = 1;
+        this.hp          = 90;
+        this.maxHp = 90;
 
         this.WIDTH  = image.getWidth();
         this.HEIGHT = image.getHeight();
@@ -38,7 +38,7 @@ public class ShipEnemyGun02 extends ShipEnemy{
         this.gf = gf;
         this.framesSec=0;
         this.framesMain = 0;
-        this.score=2;
+        this.score=5;
 
         this.code = "102";
         this.dieCode = dieCode;
@@ -73,10 +73,10 @@ public class ShipEnemyGun02 extends ShipEnemy{
 
 
         //随机开火
-        if(framesSec >=6) {
-            if (random.nextInt(100) > 90) {
+        if(framesSec >=4) {
+            if (random.nextInt(100) > 80) {
                 this.fire();
-                framesSec=0;
+                framesSec-=4;
             }
         }
 
@@ -93,12 +93,8 @@ public class ShipEnemyGun02 extends ShipEnemy{
         gf.enemyBullets.add(new BulletGun(this.x + this.WIDTH / 2, this.y + this.HEIGHT / 2, dir, group, gf,false));
     }
 
-    //二+4/4成几率往左
+    // 完全随机
     private void randomDir() {
-        if(random.nextInt(5)>3){
-            this.dir=Dir.L;
-            return;
-        }
         this.dir=Dir.values()[random.nextInt(4)];
     }
 

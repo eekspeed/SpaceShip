@@ -72,10 +72,11 @@ public class ShipPlayerS extends ShipPlayer {
     @Override
     public void fire() {
         if(framesSec<=0){
-            ArmSec.fire(this.x + this.WIDTH / 2, this.y + this.HEIGHT / 2, dir, gf);
-            framesSec+=40;
+            if(shieldValue>30){
+                shieldValue = ArmSec.fire(this.x + this.WIDTH / 2, this.y + this.HEIGHT / 2, dir, gf, shieldValue);
+                framesSec += 5;
+            }
         }
-        //gf.playerBullets.add(new BulletLaser(this.x + this.WIDTH / 2, this.y + this.HEIGHT / 2, dir, group, gf,false));
        
     }
 
