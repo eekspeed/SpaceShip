@@ -17,14 +17,14 @@ public class BulletBombDataThread implements Runnable {
     private static String[] dataSplit = null;
     private static String[] tempSplit = null;
 
-    private BulletArt bArt = new BulletArt();
-    private BulletGun bGun = new BulletGun();
+    private BulletArt bArt     = new BulletArt();
+    private BulletGun bGun     = new BulletGun();
     private BulletLaser bLaser = new BulletLaser();
 
     public BulletBombDataThread(GameFrame gf, BufferedReader bR, BufferedWriter bW, int sign) {
-        this.gf = gf;
-        this.bR = bR;
-        this.bW = bW;
+        this.gf   = gf;
+        this.bR   = bR;
+        this.bW   = bW;
         this.sign = sign;
     }
 
@@ -65,7 +65,7 @@ public class BulletBombDataThread implements Runnable {
             writeEnemyBulletData();
 
             data += "|";
-            temp = "";
+            temp  = "";
 
             writePlayerBulletData();
 

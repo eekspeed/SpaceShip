@@ -8,13 +8,13 @@ public class ShipPlayer extends ShipBase {
 
         moving = false;
         living = true;
-        group = Group.Good;
+        group  = Group.Good;
     }
 
     @Override
     public void paint(Graphics g) {
         if (!living) {
-            if(moving == true){
+            if (moving == true) {
                 moving = false;
                 Sound.playSound("Sound/Death.wav");
                 gf.X = 3;
@@ -24,10 +24,10 @@ public class ShipPlayer extends ShipBase {
         } else {
             g.drawImage(this.image, this.x, this.y, null);
 
-            if(shieldValue<=maxShieldValue){
+            if (shieldValue <= maxShieldValue) {
                 shieldValue += ArmEngine.getEnergy();
             }
-            
+
             paintShield(g);
             paintHp(g);
 

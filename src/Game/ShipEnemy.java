@@ -1,11 +1,11 @@
 package Game;
 
-public class ShipEnemy extends ShipBase{
-    //击破分数
+public class ShipEnemy extends ShipBase {
+    // 击破分数
     public int score;
 
-    public ShipEnemy(){
-        this.dir   = Dir.L;
+    public ShipEnemy() {
+        this.dir = Dir.L;
 
         this.moving = true;
         this.living = true;
@@ -14,9 +14,9 @@ public class ShipEnemy extends ShipBase{
 
     @Override
     public void die() {
-        this.living = false;
-        this.gf.score+=this.score;
+        this.living    = false;
+        this.gf.score += this.score;
         this.gf.enemyDie.add(dieCode);
     }
-    
+
 }

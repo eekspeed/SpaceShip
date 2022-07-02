@@ -6,13 +6,13 @@ import java.util.Random;
 public class ShipEnemyBoss extends ShipEnemy {
     private Random random = new Random();
 
-    public ShipEnemyBoss(){
+    public ShipEnemyBoss() {
         this.code = "105";
     }
 
-    public ShipEnemyBoss(int x, int y, GameFrame gf,int dieCode,boolean moving,boolean havesend) {
+    public ShipEnemyBoss(int x, int y, GameFrame gf, int dieCode, boolean moving, boolean havesend) {
 
-        this.image = ResourceManager.enemy_boss;
+        this.image     = ResourceManager.enemy_boss;
         this.imageBomb = ResourceManager.bomb_LL;
 
         this.x = x;
@@ -20,30 +20,30 @@ public class ShipEnemyBoss extends ShipEnemy {
 
         speed = 1;
 
-        shieldValue = 2000;
+        shieldValue    = 2000;
         maxShieldValue = 2000;
-        Armorthick = 10;
-        hp = 3000;
-        maxHp = 3000;
+        Armorthick     = 10;
+        hp             = 3000;
+        maxHp          = 3000;
 
-        WIDTH = image.getWidth();
+        WIDTH  = image.getWidth();
         HEIGHT = image.getHeight();
 
-        rect = new Rectangle();
-        rect.x = this.x;
-        rect.y = this.y;
-        rect.width = WIDTH;
+        rect        = new Rectangle();
+        rect.x      = this.x;
+        rect.y      = this.y;
+        rect.width  = WIDTH;
         rect.height = HEIGHT;
 
-        this.gf = gf;
-        this.framesSec = 0;
+        this.gf         = gf;
+        this.framesSec  = 0;
         this.framesMain = 0;
-        this.score = 100;
+        this.score      = 100;
 
-        this.code = "105";
+        this.code    = "105";
         this.dieCode = dieCode;
 
-        this.moving = moving;
+        this.moving   = moving;
         this.havesend = havesend;
     }
 
@@ -58,12 +58,12 @@ public class ShipEnemyBoss extends ShipEnemy {
         g.drawImage(this.image, this.x, this.y, null);
         paintShield(g);
         paintHp(g);
-        
+
         move();
 
-        rect.x=this.x;
-        rect.y=this.y;
-        
+        rect.x = this.x;
+        rect.y = this.y;
+
         framesSec++;
         framesMain++;
     }
@@ -75,16 +75,16 @@ public class ShipEnemyBoss extends ShipEnemy {
         }
 
         switch (dir) {
-            case L:
+            case L: 
                 x -= speed;
                 break;
-            case R:
+            case R: 
                 x += speed;
                 break;
-            case U:
+            case U: 
                 y -= speed;
                 break;
-            case D:
+            case D: 
                 y += speed;
                 break;
         }
@@ -93,22 +93,28 @@ public class ShipEnemyBoss extends ShipEnemy {
 
         // 自动开火
         if (random.nextInt(100) > 90) {
-            for(int i = 0; i <5;i++){
-                gf.enemyBullets.add(new BulletGun(this.x + this.WIDTH / 2, this.y + this.HEIGHT / 2, dir, group, gf,false));
+            for (int i = 0; i < 5; i++) {
+                gf.enemyBullets
+                        .add(new BulletGun(this.x + this.WIDTH / 2, this.y + this.HEIGHT / 2, dir, group, gf, false));
             }
         }
 
-        if (random.nextInt(100) > 95) {
-            for(int i = 0; i <4;i++){
-                gf.enemyBullets.add(new BulletLaser(this.x + this.WIDTH / 2, this.y + this.HEIGHT / 2, dir, group, gf,false));
+        if (framesSec >= 5) {
+            if (random.nextInt(100) > 95) {
+                for (int i = 0; i < 4; i++) {
+                    gf.enemyBullets
+                            .add(new BulletLaser(this.x + this.WIDTH / 2, this.y + this.HEIGHT / 2, dir, group, gf,
+                                    false));
+                }
+                framesSec = 0;
             }
         }
 
         // 随机开火
-        if (framesSec >= 10) {
+        if (framesMain >= 10) {
             if (random.nextInt(100) > 90) {
                 this.fire();
-                framesSec = 0;
+                framesMain = 0;
             }
         }
 
@@ -121,8 +127,8 @@ public class ShipEnemyBoss extends ShipEnemy {
 
     @Override
     public void fire() {
-        gf.enemyBullets.add(new BulletArt(this.x + this.WIDTH / 2, this.y + this.HEIGHT / 2, dir, group, gf,false));
-        gf.enemyBullets.add(new BulletArt(this.x + this.WIDTH / 2, this.y + this.HEIGHT / 2, dir, group, gf,false));
+        gf.enemyBullets.add(new BulletArt(this.x + this.WIDTH / 2, this.y + this.HEIGHT / 2, dir, group, gf, false));
+        gf.enemyBullets.add(new BulletArt(this.x + this.WIDTH / 2, this.y + this.HEIGHT / 2, dir, group, gf, false));
     }
 
     // 二+4/4成几率往左

@@ -11,9 +11,9 @@ public class ShipEnemyArt extends ShipEnemy {
         this.code = "104";
     }
 
-    public ShipEnemyArt(int x, int y, GameFrame gf,int dieCode,boolean moving,boolean havesend) {
+    public ShipEnemyArt(int x, int y, GameFrame gf, int dieCode, boolean moving, boolean havesend) {
 
-        this.image = ResourceManager.enemy_art;
+        this.image     = ResourceManager.enemy_art;
         this.imageBomb = ResourceManager.bomb_n;
 
         this.x = x;
@@ -21,30 +21,30 @@ public class ShipEnemyArt extends ShipEnemy {
 
         this.speed = 2;
 
-        this.shieldValue = 450;
+        this.shieldValue    = 450;
         this.maxShieldValue = 450;
-        this.Armorthick = 10;
-        this.hp = 450;
-        this.maxHp = 450;
+        this.Armorthick     = 10;
+        this.hp             = 450;
+        this.maxHp          = 450;
 
-        this.WIDTH = image.getWidth();
+        this.WIDTH  = image.getWidth();
         this.HEIGHT = image.getHeight();
 
-        this.rect = new Rectangle();
-        this.rect.x = this.x;
-        this.rect.y = this.y;
-        this.rect.width = WIDTH;
+        this.rect        = new Rectangle();
+        this.rect.x      = this.x;
+        this.rect.y      = this.y;
+        this.rect.width  = WIDTH;
         this.rect.height = HEIGHT;
 
-        this.gf = gf;
-        this.framesSec = 0;
+        this.gf         = gf;
+        this.framesSec  = 0;
         this.framesMain = 0;
-        this.score = 30;
+        this.score      = 30;
 
-        this.code = "104";
+        this.code    = "104";
         this.dieCode = dieCode;
 
-        this.moving = moving;
+        this.moving   = moving;
         this.havesend = havesend;
     }
 
@@ -55,16 +55,16 @@ public class ShipEnemyArt extends ShipEnemy {
         }
 
         switch (dir) {
-            case L:
+            case L: 
                 x -= speed;
                 break;
-            case R:
+            case R: 
                 x += speed;
                 break;
-            case U:
+            case U: 
                 y -= speed;
                 break;
-            case D:
+            case D: 
                 y += speed;
                 break;
         }
@@ -74,11 +74,11 @@ public class ShipEnemyArt extends ShipEnemy {
         // 自动开火
 
         if (random.nextInt(100) > 95) {
-            for(int i = 0; i <4;i++){
-                gf.enemyBullets.add(new BulletGun(this.x + this.WIDTH / 2, this.y + this.HEIGHT / 2, dir, group, gf,false));
+            for (int i = 0; i < 4; i++) {
+                gf.enemyBullets
+                        .add(new BulletGun(this.x + this.WIDTH / 2, this.y + this.HEIGHT / 2, dir, group, gf, false));
             }
         }
-        
 
         // 随机开火
         if (framesSec >= 80) {
@@ -98,7 +98,7 @@ public class ShipEnemyArt extends ShipEnemy {
     @Override
     public void fire() {
 
-        gf.enemyBullets.add(new BulletArt(this.x + this.WIDTH / 2, this.y + this.HEIGHT / 2, dir, group, gf,false));
+        gf.enemyBullets.add(new BulletArt(this.x + this.WIDTH / 2, this.y + this.HEIGHT / 2, dir, group, gf, false));
 
     }
 

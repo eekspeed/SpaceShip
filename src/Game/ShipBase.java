@@ -37,7 +37,7 @@ public class ShipBase {
     public int HEIGHT;
 
     // 碰撞矩形
-    Rectangle rect;
+    public Rectangle rect;
 
     // 初始默认移动
     public boolean moving;
@@ -78,12 +78,12 @@ public class ShipBase {
         g.drawImage(this.image, this.x, this.y, null);
         paintShield(g);
         paintHp(g);
-        
+
         move();
 
-        rect.x=this.x;
-        rect.y=this.y;
-        
+        rect.x = this.x;
+        rect.y = this.y;
+
         framesSec++;
         framesMain++;
     }

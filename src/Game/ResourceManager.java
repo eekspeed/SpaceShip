@@ -4,7 +4,7 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 import javax.imageio.ImageIO;
 
-//可尝试使用单例
+// 单例不会用……
 public class ResourceManager {
     public static BufferedImage background;
     public static BufferedImage earth;

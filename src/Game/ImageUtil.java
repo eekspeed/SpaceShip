@@ -14,14 +14,15 @@ public class ImageUtil {
 
     private static Graphics2D graphics2d;
 
-    public static BufferedImage rotateImage(final BufferedImage bufferedimage,final Double degree) {
-        w = bufferedimage.getWidth();
-        h = bufferedimage.getHeight();
+    public static BufferedImage rotateImage(BufferedImage bufferedimage, Double degree) {
+        w    = bufferedimage.getWidth();
+        h    = bufferedimage.getHeight();
         type = bufferedimage.getColorModel().getTransparency();
-        
-        image = new BufferedImage(w, h, type);
+
+        image      = new BufferedImage(w, h, type);
         graphics2d = image.createGraphics();
 
+        // 采用双线性插值
         graphics2d.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR);
 
         graphics2d.rotate(Math.toRadians(degree), w / 2, h / 2);

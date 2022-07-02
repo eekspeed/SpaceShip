@@ -53,7 +53,7 @@ public class BulletBase {
     // 射程
     public int range;
 
-    // 需要移动的xy值
+    // 最终落点
     public int FX, FY;
 
     // 在分速度不足1时用于累积的数字
@@ -96,16 +96,16 @@ public class BulletBase {
     }
 
     public void rectmove() {
-        if(this.rect.width==this.WIDTH){
+        if (this.rect.width == this.WIDTH) {
             this.rect.x = this.x;
         } else {
-            this.rect.x = this.x+this.WIDTH/2-this.rect.width/2;
+            this.rect.x = this.x + this.WIDTH / 2 - this.rect.width / 2;
         }
 
-        if(this.rect.height==this.HEIGHT){
+        if (this.rect.height == this.HEIGHT) {
             this.rect.y = this.y;
         } else {
-            this.rect.y = this.y+this.HEIGHT/2-this.rect.height/2;
+            this.rect.y = this.y + this.HEIGHT / 2 - this.rect.height / 2;
         }
     }
 
@@ -156,8 +156,8 @@ public class BulletBase {
             }
 
             if (this.ty > 1 || this.ty < -1) {
-                this.y += this.ty;
-                this.ty = 0;
+                this.y  += this.ty;
+                this.ty  = 0;
             }
 
             boundsCheck();
@@ -178,8 +178,8 @@ public class BulletBase {
             }
 
             if (this.ty > 1 || this.ty < -1) {
-                this.y += this.ty;
-                this.ty = 0;
+                this.y  += this.ty;
+                this.ty  = 0;
             }
 
             boundsCheck();
@@ -200,8 +200,8 @@ public class BulletBase {
             }
 
             if (this.tx > 1 || this.tx < -1) {
-                this.x += this.tx;
-                this.tx = 0;
+                this.x  += this.tx;
+                this.tx  = 0;
             }
 
             boundsCheck();
@@ -222,8 +222,8 @@ public class BulletBase {
             }
 
             if (this.tx > 1 || this.tx < -1) {
-                this.x += tx;
-                this.tx = 0;
+                this.x  += tx;
+                this.tx  = 0;
             }
 
             boundsCheck();
@@ -297,12 +297,12 @@ public class BulletBase {
         this.living = false;
     }
 
-    // 根据传入方向确定需要移动到的xy值
+    // 根据方向确定需要移动到的xy值
     public void point() {
         if (this.dir == Dir.R) {
 
             this.FX = (int) (this.x + this.range * Math.cos(this.angle));
-            this.r = random.nextInt(3);
+            this.r  = random.nextInt(3);
 
             if (this.r == 0) {
                 this.FY = this.y;
@@ -316,7 +316,7 @@ public class BulletBase {
 
         if (this.dir == Dir.L) {
             this.FX = (int) (this.x - this.range * Math.cos(this.angle));
-            this.r = this.random.nextInt(3);
+            this.r  = this.random.nextInt(3);
 
             if (this.r == 0) {
                 this.FY = this.y;
@@ -330,7 +330,7 @@ public class BulletBase {
 
         if (this.dir == Dir.U) {
             this.FY = (int) (this.y - this.range * Math.cos(this.angle));
-            this.r = this.random.nextInt(3);
+            this.r  = this.random.nextInt(3);
 
             if (this.r == 0) {
                 this.FX = this.x;
@@ -343,7 +343,7 @@ public class BulletBase {
 
         if (this.dir == Dir.D) {
             this.FY = (int) (this.y + this.range * Math.cos(this.angle));
-            this.r = this.random.nextInt(3);
+            this.r  = this.random.nextInt(3);
 
             if (r == 0) {
                 this.FX = this.x;

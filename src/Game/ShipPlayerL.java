@@ -8,9 +8,9 @@ public class ShipPlayerL extends ShipPlayer {
         this.code = "203";
     }
 
-    public ShipPlayerL(int x, int y, GameFrame gf,int dieCode,boolean moving,boolean havesend) {
+    public ShipPlayerL(int x, int y, GameFrame gf, int dieCode, boolean moving, boolean havesend) {
 
-        image = ResourceManager.playerShip_L;
+        image     = ResourceManager.playerShip_L;
         imageBomb = ResourceManager.bomb_LL;
 
         this.x = x;
@@ -18,29 +18,29 @@ public class ShipPlayerL extends ShipPlayer {
 
         speed = 5;
 
-        shieldValue = 1000;
+        shieldValue    = 1000;
         maxShieldValue = 1000;
-        Armorthick = 10;
-        hp = 2000;
-        maxHp = 2000;
+        Armorthick     = 10;
+        hp             = 2000;
+        maxHp          = 2000;
 
-        WIDTH = image.getWidth();
+        WIDTH  = image.getWidth();
         HEIGHT = image.getHeight();
 
-        rect = new Rectangle();
-        rect.x = this.x;
-        rect.y = this.y;
-        rect.width = WIDTH;
+        rect        = new Rectangle();
+        rect.x      = this.x;
+        rect.y      = this.y;
+        rect.width  = WIDTH;
         rect.height = HEIGHT;
 
-        this.gf = gf;
-        this.framesSec = 0;
+        this.gf         = gf;
+        this.framesSec  = 0;
         this.framesMain = 0;
 
-        this.code = "203";
+        this.code    = "203";
         this.dieCode = dieCode;
 
-        this.moving = moving;
+        this.moving   = moving;
         this.havesend = havesend;
     }
 
@@ -51,16 +51,16 @@ public class ShipPlayerL extends ShipPlayer {
         }
 
         switch (dir) {
-            case L:
+            case L: 
                 x -= speed;
                 break;
-            case R:
+            case R: 
                 x += speed;
                 break;
-            case U:
+            case U: 
                 y -= speed;
                 break;
-            case D:
+            case D: 
                 y += speed;
                 break;
         }
@@ -71,10 +71,10 @@ public class ShipPlayerL extends ShipPlayer {
 
     @Override
     public void fire() {
-        if(framesSec<=0){
-            if(shieldValue>30){
-                shieldValue = ArmSec.fire(this.x + this.WIDTH / 2, this.y + this.HEIGHT / 2, dir, gf, shieldValue);
-                framesSec += 5;
+        if (framesSec <= 0) {
+            if (shieldValue > 30) {
+                shieldValue  = ArmSec.fire(this.x + this.WIDTH / 2, this.y + this.HEIGHT / 2, dir, gf, shieldValue);
+                framesSec   += 5;
             }
         }
     }

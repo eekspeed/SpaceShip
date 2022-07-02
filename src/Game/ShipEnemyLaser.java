@@ -12,7 +12,7 @@ public class ShipEnemyLaser extends ShipEnemy {
 
     public ShipEnemyLaser(int x, int y, GameFrame gf, int dieCode, boolean moving, boolean havesend) {
 
-        this.image = ResourceManager.enemy_laser;
+        this.image     = ResourceManager.enemy_laser;
         this.imageBomb = ResourceManager.bomb_n;
 
         this.x = x;
@@ -20,30 +20,30 @@ public class ShipEnemyLaser extends ShipEnemy {
 
         this.speed = 3;
 
-        this.shieldValue = 200;
+        this.shieldValue    = 200;
         this.maxShieldValue = 200;
-        this.Armorthick = 5;
-        this.hp = 200;
-        this.maxHp = 200;
+        this.Armorthick     = 5;
+        this.hp             = 200;
+        this.maxHp          = 200;
 
-        this.WIDTH = image.getWidth();
+        this.WIDTH  = image.getWidth();
         this.HEIGHT = image.getHeight();
 
-        this.rect = new Rectangle();
-        this.rect.x = this.x;
-        this.rect.y = this.y;
-        this.rect.width = WIDTH;
+        this.rect        = new Rectangle();
+        this.rect.x      = this.x;
+        this.rect.y      = this.y;
+        this.rect.width  = WIDTH;
         this.rect.height = HEIGHT;
 
-        this.gf = gf;
-        this.framesSec = 0;
+        this.gf         = gf;
+        this.framesSec  = 0;
         this.framesMain = 0;
-        this.score = 20;
+        this.score      = 20;
 
-        this.code = "103";
+        this.code    = "103";
         this.dieCode = dieCode;
 
-        this.moving = moving;
+        this.moving   = moving;
         this.havesend = havesend;
     }
 
@@ -54,16 +54,16 @@ public class ShipEnemyLaser extends ShipEnemy {
         }
 
         switch (dir) {
-            case L:
+            case L: 
                 x -= speed;
                 break;
-            case R:
+            case R: 
                 x += speed;
                 break;
-            case U:
+            case U: 
                 y -= speed;
                 break;
-            case D:
+            case D: 
                 y += speed;
                 break;
         }

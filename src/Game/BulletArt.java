@@ -18,19 +18,19 @@ public class BulletArt extends BulletBase {
 
         this.image = ResourceManager.bullet_art;
 
-        this.x = xc - image.getWidth() / 2;
-        this.y = yc - image.getHeight() / 2;
+        this.x   = xc - image.getWidth() / 2;
+        this.y   = yc - image.getHeight() / 2;
         this.dir = dir;
 
-        this.WIDTH = image.getWidth();
+        this.WIDTH  = image.getWidth();
         this.HEIGHT = image.getHeight();
 
-        this.rect = new Rectangle();
-        rect.width = this.WIDTH + 2;
+        this.rect   = new Rectangle();
+        rect.width  = this.WIDTH + 2;
         rect.height = this.HEIGHT + 2;
 
-        this.hurt = 300;
-        this.pierce = 6;// 穿透同样决定子弹互相碰撞问题
+        this.hurt   = 300;
+        this.pierce = 6;    // 穿透同样决定子弹互相碰撞问题
 
         this.gf = gf;
 
@@ -38,12 +38,12 @@ public class BulletArt extends BulletBase {
 
         this.living = true;
 
-        this.code = "12";
+        this.code     = "12";
         this.havesend = havesend;
 
         this.maxAngle = 0;
-        this.angle = 0;
-        this.range = 1000;
+        this.angle    = 0;
+        this.range    = 1000;
 
         this.tx = 0;
         this.ty = 0;
@@ -59,14 +59,14 @@ public class BulletArt extends BulletBase {
         this.x = xc - image.getWidth() / 2;
         this.y = yc - image.getHeight() / 2;
 
-        this.WIDTH = image.getWidth();
+        this.WIDTH  = image.getWidth();
         this.HEIGHT = image.getHeight();
 
-        this.rect = new Rectangle();
-        rect.width = this.WIDTH + 2;
+        this.rect   = new Rectangle();
+        rect.width  = this.WIDTH + 2;
         rect.height = this.HEIGHT + 2;
 
-        this.hurt = 300;
+        this.hurt   = 300;
         this.pierce = 6;
 
         this.gf = gf;
@@ -75,12 +75,12 @@ public class BulletArt extends BulletBase {
 
         this.living = true;
 
-        this.code = "12";
+        this.code     = "12";
         this.havesend = havesend;
 
         this.maxAngle = 0;
-        this.angle = 0;
-        this.range = 1000;
+        this.angle    = 0;
+        this.range    = 1000;
 
         this.tx = 0;
         this.ty = 0;

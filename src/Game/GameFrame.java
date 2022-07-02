@@ -324,7 +324,7 @@ public class GameFrame extends Frame {
         for (int i = 0; i < playerBullets.size(); i++) {
             for (int j = 0; j < enemyBullets.size(); j++) {
                 if (playerBullets.get(i).rect.intersects(enemyBullets.get(j).rect)) {
-                    temp =playerBullets.get(i).pierce;
+                    temp = playerBullets.get(i).pierce;
                     playerBullets.get(i).pierce -= enemyBullets.get(j).pierce;
                     enemyBullets.get(j).pierce -= temp;
 
@@ -496,14 +496,18 @@ public class GameFrame extends Frame {
             else {
                 playerShips.get(playerShipStyle).moving = true;
 
-                if (bL)
+                if (bL) {
                     playerShips.get(playerShipStyle).dir = Dir.L;
-                if (bR)
+                }
+                if (bR) {
                     playerShips.get(playerShipStyle).dir = Dir.R;
-                if (bU)
+                }
+                if (bU) {
                     playerShips.get(playerShipStyle).dir = Dir.U;
-                if (bD)
+                }
+                if (bD) {
                     playerShips.get(playerShipStyle).dir = Dir.D;
+                }
             }
         }
 

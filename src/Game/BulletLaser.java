@@ -13,25 +13,25 @@ public class BulletLaser extends BulletBase {
 
         this.image = ResourceManager.bullet_laser01;
 
-        this.x = xc - image.getWidth() / 2;
-        this.y = yc - image.getHeight() / 2;
+        this.x   = xc - image.getWidth() / 2;
+        this.y   = yc - image.getHeight() / 2;
         this.dir = dir;
 
-        this.WIDTH = image.getWidth();
+        this.WIDTH  = image.getWidth();
         this.HEIGHT = image.getHeight();
 
         this.rect = new Rectangle();
 
-        if(this.dir == Dir.R || this.dir == Dir.L){
-            rect.width = 8;
+        if (this.dir == Dir.R || this.dir == Dir.L) {
+            rect.width  = 8;
             rect.height = 2;
         } else {
-            rect.width = 2;
+            rect.width  = 2;
             rect.height = 8;
         }
-        
-        this.hurt = 30;
-        this.pierce = 5;// 穿透同样决定子弹互相碰撞问题
+
+        this.hurt   = 30;
+        this.pierce = 5;   // 穿透同样决定子弹互相碰撞问题
 
         this.gf = gf;
 
@@ -39,17 +39,17 @@ public class BulletLaser extends BulletBase {
 
         this.living = true;
 
-        this.code = "11";
+        this.code     = "11";
         this.havesend = havesend;
 
         this.maxAngle = 2;
-        this.angle = 0;
-        this.range = 1000;
+        this.angle    = 0;
+        this.range    = 1000;
 
         this.tx = 0;
         this.ty = 0;
 
         this.moving = false;
     }
-    
+
 }

@@ -11,21 +11,21 @@ public class EnemyShipDataThread implements Runnable {
 
     private int sign;
 
-    private ShipEnemyArt sEArt = new ShipEnemyArt();
-    private ShipEnemyBoss sEBoss = new ShipEnemyBoss();
+    private ShipEnemyArt sEArt     = new ShipEnemyArt();
+    private ShipEnemyBoss sEBoss   = new ShipEnemyBoss();
     private ShipEnemyGun01 sEGun01 = new ShipEnemyGun01();
     private ShipEnemyGun02 sEGun02 = new ShipEnemyGun02();
     private ShipEnemyLaser sELaser = new ShipEnemyLaser();
 
-    private static String data = "";
-    private static String temp = "";
-    private static String[] dataSplit = null;
+    private static String data             = "";
+    private static String temp             = "";
+    private static String[] dataSplit      = null;
     private static String[] dataSplitSplit = null;
 
     public EnemyShipDataThread(GameFrame gf, BufferedReader bR, BufferedWriter bW, int sign) {
-        this.gf = gf;
-        this.bR = bR;
-        this.bW = bW;
+        this.gf   = gf;
+        this.bR   = bR;
+        this.bW   = bW;
         this.sign = sign;
     }
 
@@ -36,7 +36,7 @@ public class EnemyShipDataThread implements Runnable {
             while (true) {
                 write();
 
-                Feedback();
+                feedback();
 
                 try {
                     Thread.sleep(30);
@@ -50,14 +50,14 @@ public class EnemyShipDataThread implements Runnable {
             while (true) {
                 read();
 
-                Feedback();
+                feedback();
 
             }
 
         }
     }
 
-    private void Feedback() {
+    private void feedback() {
         if (sign == 0) {
 
             try {
@@ -120,7 +120,6 @@ public class EnemyShipDataThread implements Runnable {
             data += "n";
         }
 
-
     }
 
     // 封装敌方舰船生成信息与死亡代号
@@ -130,8 +129,8 @@ public class EnemyShipDataThread implements Runnable {
         for (int i = 0; i < gf.enemyShips.size(); i++) {
 
             if (gf.enemyShips.get(i).havesend == false) {
-                temp += (gf.enemyShips.get(i).code + " " + gf.enemyShips.get(i).dieCode);
-                gf.enemyShips.get(i).havesend = true;
+                                  temp        += (gf.enemyShips.get(i).code + " " + gf.enemyShips.get(i).dieCode);
+                gf.enemyShips.get(i).havesend  = true;
 
                 if (i != gf.enemyShips.size() - 1) {
                     temp += " ";
@@ -255,10 +254,10 @@ public class EnemyShipDataThread implements Runnable {
 
                 if (gf.enemyShips.get(j).dieCode == Integer.parseInt(dataSplitSplit[i])) {
 
-                    gf.enemyShips.get(j).x = Integer.parseInt(dataSplitSplit[i + 1]);
-                    gf.enemyShips.get(j).y = Integer.parseInt(dataSplitSplit[i + 2]);
+                    gf.enemyShips.get(j).x           = Integer.parseInt(dataSplitSplit[i + 1]);
+                    gf.enemyShips.get(j).y           = Integer.parseInt(dataSplitSplit[i + 2]);
                     gf.enemyShips.get(j).shieldValue = Integer.parseInt(dataSplitSplit[i + 3]);
-                    gf.enemyShips.get(j).hp = Integer.parseInt(dataSplitSplit[i + 4]);
+                    gf.enemyShips.get(j).hp          = Integer.parseInt(dataSplitSplit[i + 4]);
                     break;
 
                 }

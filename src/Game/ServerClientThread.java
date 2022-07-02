@@ -13,13 +13,14 @@ public class ServerClientThread implements Runnable {
     private List<InputStream> inputStreams = new ArrayList<>();
     private List<OutputStream> outputStreams = new ArrayList<>();
 
+    // 从字节流到字符流
     private List<InputStreamReader> inputStreamReaders = new ArrayList<>();
     private List<OutputStreamWriter> outputStreamWriters = new ArrayList<>();
 
     private List<BufferedReader> bufferedReaders = new ArrayList<>();
     private List<BufferedWriter> bufferedWriters = new ArrayList<>();
 
-    int sign;
+    private int sign;
 
     public ServerClientThread(List<Socket> sockets, GameFrame gf,int sign) {
         this.sockets = sockets;
@@ -36,7 +37,7 @@ public class ServerClientThread implements Runnable {
             setIOStream(sockets.get(i));
         }
 
-        // 传输双方主舰位置信息
+        // 传输双方主舰信息
         new Thread(new PlayerShipThread(gf, bufferedReaders.get(0), bufferedWriters.get(0),sign)).start();
 
         // 传输敌方舰船信息
