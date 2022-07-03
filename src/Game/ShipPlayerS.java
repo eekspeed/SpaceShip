@@ -74,7 +74,7 @@ public class ShipPlayerS extends ShipPlayer {
         if(framesSec<=0){
             if(shieldValue>30){
                 shieldValue = ArmSec.fire(this.x + this.WIDTH / 2, this.y + this.HEIGHT / 2, dir, gf, shieldValue);
-                framesSec += 5;
+                framesSec += 6;
             }
         }
        

@@ -239,10 +239,13 @@ public class BulletBase {
 
         if (this.rect.intersects(ship.rect)) {
             if (ship.shieldValue > 0) {
-                ship.shieldValue -= this.hurt;
 
-                if (ship.shieldValue < 0) {
-                    ship.hp += ship.shieldValue;
+                if(ship.Armorthick < this.hurt) {
+                    ship.shieldValue -= this.hurt - ship.Armorthick;
+
+                    if (ship.shieldValue < 0) {
+                        ship.hp += ship.shieldValue;
+                    }
                 }
 
             } else {

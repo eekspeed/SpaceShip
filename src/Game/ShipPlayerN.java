@@ -16,11 +16,11 @@ public class ShipPlayerN extends ShipPlayer {
         this.x = x;
         this.y = y;
 
-        speed = 5;
+        speed = 4;
 
-        shieldValue = 400;
-        maxShieldValue = 400;
-        Armorthick = 2;
+        shieldValue = 600;
+        maxShieldValue = 600;
+        Armorthick = 5;
         hp = 800;
         maxHp = 800;
 
@@ -74,7 +74,7 @@ public class ShipPlayerN extends ShipPlayer {
         if (framesSec <= 0) {
             if(shieldValue>30){
                 shieldValue = ArmSec.fire(this.x + this.WIDTH / 2, this.y + this.HEIGHT / 2, dir, gf, shieldValue);
-                framesSec += 5;
+                framesSec += 6;
             }
         }
     }

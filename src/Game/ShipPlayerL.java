@@ -16,11 +16,11 @@ public class ShipPlayerL extends ShipPlayer {
         this.x = x;
         this.y = y;
 
-        speed = 5;
+        speed = 3;
 
         shieldValue    = 1000;
         maxShieldValue = 1000;
-        Armorthick     = 10;
+        Armorthick     = 15;
         hp             = 2000;
         maxHp          = 2000;
 
@@ -28,7 +28,7 @@ public class ShipPlayerL extends ShipPlayer {
         HEIGHT = image.getHeight();
 
         rect        = new Rectangle();
-        rect.x      = this.x;
+        rect.x      = this.x-20;
         rect.y      = this.y;
         rect.width  = WIDTH;
         rect.height = HEIGHT;
@@ -74,7 +74,7 @@ public class ShipPlayerL extends ShipPlayer {
         if (framesSec <= 0) {
             if (shieldValue > 30) {
                 shieldValue  = ArmSec.fire(this.x + this.WIDTH / 2, this.y + this.HEIGHT / 2, dir, gf, shieldValue);
-                framesSec   += 5;
+                framesSec   += 6;
             }
         }
     }

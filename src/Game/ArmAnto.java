@@ -6,7 +6,7 @@ public class ArmAnto {
 
     public static void fire(int x, int y, Dir dir, GameFrame gf) {
         if (ArmGun.enable == true) {
-            if (frames >= 6) {
+            if (frames >= 8) {
                 ArmGun.fire(x, y, dir, gf);
                 frames = 0;
                 Sound.playSound("Sound/Gun.wav");

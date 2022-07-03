@@ -50,7 +50,7 @@ public class Client {
 
                 while (true) {
                     try {
-                        Thread.sleep(30);
+                        Thread.sleep(25);
                         frame.repaint();
                     } catch (InterruptedException e) {
                         e.printStackTrace();
