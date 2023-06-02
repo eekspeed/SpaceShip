@@ -1,3 +1,13 @@
+/*
+ * @Author: eekspeed 103409346+eekspeed@users.noreply.github.com
+ * @Date: 2022-06-30 17:50:39
+ * @LastEditors: eekspeed 103409346+eekspeed@users.noreply.github.com
+ * @LastEditTime: 2023-06-02 11:46:19
+ * @FilePath: \SpaceShip\src\Game\ArmArt.java
+ * @Description: 
+ * ( ﾟ∀。)
+ * Copyright (c) 2023 by ${git_name_email}, All Rights Reserved. 
+ */
 package Game;
 
 public class ArmArt {
