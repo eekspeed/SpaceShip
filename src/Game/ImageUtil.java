@@ -22,7 +22,7 @@ public class ImageUtil {
         image      = new BufferedImage(w, h, type);
         graphics2d = image.createGraphics();
 
-        // ²ÉÓÃË«ÏßĞÔ²åÖµ
+        // é‡‡ç”¨åŒçº¿æ€§æ’å€¼
         graphics2d.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR);
 
         graphics2d.rotate(Math.toRadians(degree), w / 2, h / 2);

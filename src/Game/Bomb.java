@@ -6,10 +6,10 @@ import java.awt.image.BufferedImage;
 public class Bomb {
     private BufferedImage image;
 
-    // 位置
+    // 浣嶇疆
     private int x, y;
 
-    // 存活时间
+    // 瀛樻椿鏃堕棿
     public int frames = 0;
 
     public Bomb(BufferedImage image, int x, int y) {

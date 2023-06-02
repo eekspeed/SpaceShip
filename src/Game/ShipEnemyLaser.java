@@ -70,7 +70,7 @@ public class ShipEnemyLaser extends ShipEnemy {
 
         boundsCheck();
 
-        // Ëæ»ú¿ª»ð
+        // éšæœºå¼€ç«
         if (framesSec >= 15) {
             if (random.nextInt(100) > 0) {
                 this.fire();
@@ -84,7 +84,7 @@ public class ShipEnemyLaser extends ShipEnemy {
             }
         }
 
-        // Ëæ»ú±äÏò
+        // éšæœºå˜å‘
         if (random.nextInt(100) > 95) {
             randomDir();
         }
@@ -99,7 +99,7 @@ public class ShipEnemyLaser extends ShipEnemy {
         }
     }
 
-    // ¶þ+4/4³É¼¸ÂÊÍù×ó
+    // äºŒ+4/4æˆå‡ çŽ‡å¾€å·¦
     private void randomDir() {
         if (random.nextInt(5) > 3) {
             this.dir = Dir.L;

@@ -20,48 +20,48 @@ public class GameFrame extends Frame {
 
     int temp;
 
-    // É±µĞ»ı·Ö
+    // æ€æ•Œç§¯åˆ†
     public int score = 0;
 
-    // ´°¿Úµ±Ç°×´Ì¬
+    // çª—å£å½“å‰çŠ¶æ€
     public int X = 0;
 
-    // µĞ·½·É´¬ËÀÍöĞÅÏ¢£¨×ÔÉí´úºÅ£©£¬Æµ·±Ğ´ÈëÇå¿ÕÊ¹ÓÃÁ´±í
+    // æ•Œæ–¹é£èˆ¹æ­»äº¡ä¿¡æ¯ï¼ˆè‡ªèº«ä»£å·ï¼‰ï¼Œé¢‘ç¹å†™å…¥æ¸…ç©ºä½¿ç”¨é“¾è¡¨
     List<Integer> enemyDie = new LinkedList<>();
 
-    // Íæ¼Ò·É´¬ÁĞ±í
+    // ç©å®¶é£èˆ¹åˆ—è¡¨
     List<ShipPlayer> playerShips = new ArrayList<>();
 
     int playerShipStyle = 0;
 
-    // µÚ¶şÍæ¼Ò·É´¬ÁĞ±í
+    // ç¬¬äºŒç©å®¶é£èˆ¹åˆ—è¡¨
     List<ShipPlayer> secPlayerShips = new ArrayList<>();
 
     int secPlayerStyle = 0;
 
-    // ÓÑ·½·É´¬ÁĞ±í
+    // å‹æ–¹é£èˆ¹åˆ—è¡¨
     List<ShipPlayer> friendShips = new ArrayList<>();
 
-    // µĞ·½·É´¬ÁĞ±í
+    // æ•Œæ–¹é£èˆ¹åˆ—è¡¨
     List<ShipEnemy> enemyShips = new ArrayList<>();
 
-    // ÎÒ·½×Óµ¯ÁĞ±í
+    // æˆ‘æ–¹å­å¼¹åˆ—è¡¨
     List<BulletBase> playerBullets = new ArrayList<>();
 
-    // µĞ·½×Óµ¯ÁĞ±í
+    // æ•Œæ–¹å­å¼¹åˆ—è¡¨
     List<BulletBase> enemyBullets = new ArrayList<>();
 
-    // ±¬Õ¨ÁĞ±í
+    // çˆ†ç‚¸åˆ—è¡¨
     List<Bomb> bombs = new ArrayList<>();
 
-    // ÓÉÖ÷»úÆôÓÃ»¹ÊÇÓÉ¿Í»§¶ËÆôÓÃ
+    // ç”±ä¸»æœºå¯ç”¨è¿˜æ˜¯ç”±å®¢æˆ·ç«¯å¯ç”¨
     int whoEnable;
 
-    // ´°¿Ú
+    // çª—å£
     public GameFrame(int whoEnable) {
         this.whoEnable = whoEnable;
 
-        setTitle("ÓîÖæÕ½½¢ÎïÓï");
+        setTitle("å®‡å®™æˆ˜èˆ°ç‰©è¯­");
         setSize(GAME_WIDTH, GAME_HEIGHT);
         setLocationRelativeTo(null);
         setResizable(false);
@@ -69,7 +69,7 @@ public class GameFrame extends Frame {
 
         addKeyListener(new keyListener());
         addMouseListener(new MouseListener());
-        // ´°¿Ú¹Ø±ÕÊÂ¼ş
+        // çª—å£å…³é—­äº‹ä»¶
         addWindowListener(new WindowAdapter() {
             @Override
             public void windowClosing(WindowEvent e) {
@@ -78,7 +78,7 @@ public class GameFrame extends Frame {
         });
     }
 
-    // Ë«»º³å
+    // åŒç¼“å†²
     Image offscreenImage = null;
 
     @Override
@@ -97,14 +97,14 @@ public class GameFrame extends Frame {
 
     public void paint(Graphics g) {
         if (X == 0) {
-            // ¿ªÊ¼½çÃæ
+            // å¼€å§‹ç•Œé¢
             g.drawImage(ResourceManager.background, 0, 0, null);
             g.drawImage(ResourceManager.earth, 720, 120, null);
             g.setColor(Color.white);
-            g.setFont(new Font("ºÚÌå", Font.PLAIN, 40));
+            g.setFont(new Font("é»‘ä½“", Font.PLAIN, 40));
 
-            String title = "ÓîÖæÕ½½¢ÎïÓïR.P.G.";
-            String help = "µã»÷¿ªÊ¼ÓÎÏ·";
+            String title = "å®‡å®™æˆ˜èˆ°ç‰©è¯­R.P.G.";
+            String help = "ç‚¹å‡»å¼€å§‹æ¸¸æˆ";
             int wordWidth1 = g.getFontMetrics().stringWidth(title);
             int wordWidth2 = g.getFontMetrics().stringWidth(help);
 
@@ -113,36 +113,36 @@ public class GameFrame extends Frame {
 
         } else {
 
-            // Åö×²¼ì²â
+            // ç¢°æ’æ£€æµ‹
             if (whoEnable == 0) {
                 collidetest();
             } else {
                 pseudoCollidetest();
             }
 
-            // !»­±³¾°(±³¾°±ØĞë×îÏÈ£¡£¡£¡)
+            // !ç”»èƒŒæ™¯(èƒŒæ™¯å¿…é¡»æœ€å…ˆï¼ï¼ï¼)
             paintBackground(g);
 
-            // »ı·ÖÉı¼¶
+            // ç§¯åˆ†å‡çº§
             if (score >= 40 && playerShipStyle == 0) {
                 g.setColor(Color.red);
-                g.setFont(new Font("ºÚÌå", Font.PLAIN, 20));
-                g.drawString("°´Alt¼ü½«Ö÷½¢Éı¼¶Îª¡°ÖĞĞÍÕ½½¢¡±", 400, 60);
+                g.setFont(new Font("é»‘ä½“", Font.PLAIN, 20));
+                g.drawString("æŒ‰Alté”®å°†ä¸»èˆ°å‡çº§ä¸ºâ€œä¸­å‹æˆ˜èˆ°â€", 400, 60);
             } else if (score >= 120 && playerShipStyle == 1) {
                 g.setColor(Color.red);
-                g.setFont(new Font("ºÚÌå", Font.PLAIN, 20));
-                g.drawString("°´Alt¼ü½«Ö÷½¢Éı¼¶Îª¡°ÖØĞÍÕ½½¢¡±", 400, 60);
+                g.setFont(new Font("é»‘ä½“", Font.PLAIN, 20));
+                g.drawString("æŒ‰Alté”®å°†ä¸»èˆ°å‡çº§ä¸ºâ€œé‡å‹æˆ˜èˆ°â€", 400, 60);
             }
 
-            // Éı¼¶ÎäÆ÷
+            // å‡çº§æ­¦å™¨
             armsLevelUp(g);
 
-            // »­·ÖÊı
+            // ç”»åˆ†æ•°
             paintScore(g);
 
-            /* Ôø¾­ÕâÀï³¢ÊÔ¹ıÏß³Ì³Ø¶àÏß³Ì»æÍ¼£¬µ«ÔÚÔËĞĞÊ±Æµ·¢¿ÕÖ¸Õë´íÎóËÀ»ú£¬Ëì·ÅÆú */
+            /* æ›¾ç»è¿™é‡Œå°è¯•è¿‡çº¿ç¨‹æ± å¤šçº¿ç¨‹ç»˜å›¾ï¼Œä½†åœ¨è¿è¡Œæ—¶é¢‘å‘ç©ºæŒ‡é’ˆé”™è¯¯æ­»æœºï¼Œé‚æ”¾å¼ƒ */
 
-            // »­Íæ¼Ò·É´¬
+            // ç”»ç©å®¶é£èˆ¹
             if (playerShips.size() > 0) {
                 if (playerShips.get(playerShipStyle).x == -200) {
                     playerShips.get(playerShipStyle).x = 200;
@@ -150,7 +150,7 @@ public class GameFrame extends Frame {
                 playerShips.get(playerShipStyle).paint(g);
             }
 
-            // »­µÚ¶şÍæ¼Ò·É´¬
+            // ç”»ç¬¬äºŒç©å®¶é£èˆ¹
             if (secPlayerShips.size() > 0) {
                 if (secPlayerShips.get(secPlayerStyle).x == -200) {
                     secPlayerShips.get(secPlayerStyle).x = 200;
@@ -158,29 +158,29 @@ public class GameFrame extends Frame {
                 secPlayerShips.get(secPlayerStyle).paint(g);
             }
 
-            // »­ÓÑ·½·É´¬
+            // ç”»å‹æ–¹é£èˆ¹
             if (friendShips.size() > 0) {
                 for (int i = 0; i < friendShips.size(); i++) {
                     friendShips.get(i).paint(g);
                 }
             }
 
-            // »­µĞ·½·É´¬
+            // ç”»æ•Œæ–¹é£èˆ¹
             for (int i = 0; i < enemyShips.size(); i++) {
                 enemyShips.get(i).paint(g);
             }
 
-            // »­ÎÒ·½×Óµ¯
+            // ç”»æˆ‘æ–¹å­å¼¹
             for (int i = 0; i < playerBullets.size(); i++) {
                 playerBullets.get(i).paint(g);
             }
 
-            // »­µĞ·½×Óµ¯
+            // ç”»æ•Œæ–¹å­å¼¹
             for (int i = 0; i < enemyBullets.size(); i++) {
                 enemyBullets.get(i).paint(g);
             }
 
-            // »­±¬Õ¨
+            // ç”»çˆ†ç‚¸
             for (int i = 0; i < bombs.size(); i++) {
                 if (bombs.get(i).frames >= 30) {
                     bombs.remove(i);
@@ -202,58 +202,62 @@ public class GameFrame extends Frame {
 
     private void gameover(Graphics g) {
         g.setColor(Color.white);
-        g.setFont(new Font("Î¢ÈíÑÅºÚ", Font.PLAIN, 60));
-        g.drawString("Ö÷½¢Ëğ»Ù£¡ÄúÊ§°ÜÁË£¡", 550, 400);
+        g.setFont(new Font("å¾®è½¯é›…é»‘", Font.PLAIN, 60));
+        g.drawString("ä¸»èˆ°æŸæ¯ï¼æ‚¨å¤±è´¥äº†ï¼", 550, 400);
     }
 
     private void win(Graphics g) {
         g.setColor(Color.yellow);
-        g.setFont(new Font("Î¢ÈíÑÅºÚ", Font.PLAIN, 60));
-        g.drawString("ÖæÓòÇå¿Õ£¡ÄúÊ¤ÀûÁË£¡", 550, 400);
+        g.setFont(new Font("å¾®è½¯é›…é»‘", Font.PLAIN, 60));
+        g.drawString("å®™åŸŸæ¸…ç©ºï¼æ‚¨èƒœåˆ©äº†ï¼", 550, 400);
     }
 
     private void armsLevelUp(Graphics g) {
         g.setColor(Color.green);
-        g.setFont(new Font("ºÚÌå", Font.PLAIN, 20));
+        g.setFont(new Font("é»‘ä½“", Font.PLAIN, 20));
 
         if (score >= 20 && ArmGun.level == 0) {
-            g.drawString("°´1¼ü½«µ¯Ä»¡°Ë«Áª×°»úï¥¡±Éı¼¶Îª¡°ÈıÁª×°»úï¥¡±", 750, 60);
+            g.drawString("æŒ‰1é”®å°†å¼¹å¹•â€œåŒè”è£…æœºé“³â€å‡çº§ä¸ºâ€œä¸‰è”è£…æœºé“³â€", 750, 60);
         }
 
         if (score >= 40 && ArmGun.level == 1) {
-            g.drawString("°´1¼ü½«µ¯Ä»¡°ÈıÁª×°»úï¥¡±Éı¼¶Îª¡°ËÄÁª×°»úï¥¡±", 750, 60);
+            g.drawString("æŒ‰1é”®å°†å¼¹å¹•â€œä¸‰è”è£…æœºé“³â€å‡çº§ä¸ºâ€œå››è”è£…æœºé“³â€", 750, 60);
         }
 
         if (score >= 50 && ArmLaser.level == 0) {
-            g.drawString("°´2¼ü½«¸±ÅÚ¡°¼¤¹âÈıÃÅÅÚ¡±Éı¼¶Îª¡°¼¤¹âÎåÃÅÅÚ¡±", 750, 90);
+            g.drawString("æŒ‰2é”®å°†å‰¯ç‚®â€œæ¿€å…‰ä¸‰é—¨ç‚®â€å‡çº§ä¸ºâ€œæ¿€å…‰äº”é—¨ç‚®â€", 750, 90);
         }
 
         if (score >= 80 && ArmLaser.level == 1) {
-            g.drawString("°´2¼ü½«¸±ÅÚ¡°¼¤¹âÎåÃÅÅÚ¡±Éı¼¶Îª¡°¼¤¹âÆßÃÅÅÚ¡±", 750, 90);
+            g.drawString("æŒ‰2é”®å°†å‰¯ç‚®â€œæ¿€å…‰äº”é—¨ç‚®â€å‡çº§ä¸ºâ€œæ¿€å…‰ä¸ƒé—¨ç‚®â€", 750, 90);
         }
 
-        if (score >= 150 && ArmArt.level == 0) {
-            g.drawString("°´3¼ü½«Ö÷ÅÚ¡°µç´Å¼ÓÅ©ÅÚ¡±Éı¼¶Îª¡°µç´Å¼ÓÅ©ÅÚÕóÁĞ¡±", 750, 120);
+        if (score >= 50 && ArmArt.level == 0) {
+            g.drawString("æŒ‰3é”®å°†ä¸»ç‚®â€œç”µç£åŠ å†œç‚®â€å‡çº§ä¸ºâ€œç”µç£åŠ å†œç‚®é˜µåˆ—â€", 750, 120);
+        }
+
+        if (score >= 50 && ArmArt.level == 1) {
+            g.drawString("æŒ‰3é”®å°†ä¸»ç‚®â€œç”µç£åŠ å†œç‚®é˜µåˆ—â€å‡çº§ä¸ºâ€œç”µç£åŠ å†œç‚®èœ‚å·¢â€", 750, 120);
         }
 
         if (score >= 80 && ArmEngine.level == 0) {
-            g.drawString("°´4¼ü½«ÒıÇæ¡°ºËÁÑ±äÒıÇæ¡±Éı¼¶Îª¡°ºË¾Û±äÒıÇæ¡±", 750, 150);
+            g.drawString("æŒ‰4é”®å°†å¼•æ“â€œæ ¸è£‚å˜å¼•æ“â€å‡çº§ä¸ºâ€œæ ¸èšå˜å¼•æ“â€", 750, 150);
         }
 
         if (score >= 120 && ArmEngine.level == 1) {
-            g.drawString("°´4¼ü½«ÒıÇæ¡°ºË¾Û±äÒıÇæ¡±Éı¼¶Îª¡°ÀäºË¾Û±äÒıÇæ¡±", 750, 150);
+            g.drawString("æŒ‰4é”®å°†å¼•æ“â€œæ ¸èšå˜å¼•æ“â€å‡çº§ä¸ºâ€œå†·æ ¸èšå˜å¼•æ“â€", 750, 150);
         }
 
         if (score >= 160 && ArmEngine.level == 2) {
-            g.drawString("°´4¼ü½«ÒıÇæ¡°ÀäºË¾Û±äÒıÇæ¡±Éı¼¶Îª¡°·´ÎïÖÊÒıÇæ¡±", 750, 150);
+            g.drawString("æŒ‰4é”®å°†å¼•æ“â€œå†·æ ¸èšå˜å¼•æ“â€å‡çº§ä¸ºâ€œåç‰©è´¨å¼•æ“â€", 750, 150);
         }
 
         if (score >= 200 && ArmEngine.level == 3) {
-            g.drawString("°´4¼ü½«ÒıÇæ¡°·´ÎïÖÊÒıÇæ¡±Éı¼¶Îª¡°ÁãµãÒıÇæ¡±", 750, 150);
+            g.drawString("æŒ‰4é”®å°†å¼•æ“â€œåç‰©è´¨å¼•æ“â€å‡çº§ä¸ºâ€œé›¶ç‚¹å¼•æ“â€", 750, 150);
         }
     }
 
-    // Åö×²¼ì²â·½·¨
+    // ç¢°æ’æ£€æµ‹æ–¹æ³•
     private void collidetest() {
 
         for (int i = 0; i < playerBullets.size(); i++) {
@@ -271,7 +275,7 @@ public class GameFrame extends Frame {
             }
         }
 
-        // ×Óµ¯Åö×²¼ì²â
+        // å­å¼¹ç¢°æ’æ£€æµ‹
         for (int i = 0; i < playerBullets.size(); i++) {
             for (int j = 0; j < enemyBullets.size(); j++) {
                 if (playerBullets.get(i).rect.intersects(enemyBullets.get(j).rect)) {
@@ -292,7 +296,7 @@ public class GameFrame extends Frame {
 
     }
 
-    // ÓÃÓÚ¿Í»§¶ËµÄÎ±Åö×²£¬ÎŞÉËº¦£¬×²ÉÏ¾ÍÏûÊ§
+    // ç”¨äºå®¢æˆ·ç«¯çš„ä¼ªç¢°æ’ï¼Œæ— ä¼¤å®³ï¼Œæ’ä¸Šå°±æ¶ˆå¤±
     private void pseudoCollidetest() {
         for (int i = 0; i < playerBullets.size(); i++) {
             for (int j = 0; j < enemyShips.size(); j++) {
@@ -320,7 +324,7 @@ public class GameFrame extends Frame {
             }
         }
 
-        // ×Óµ¯Åö×²¼ì²â
+        // å­å¼¹ç¢°æ’æ£€æµ‹
         for (int i = 0; i < playerBullets.size(); i++) {
             for (int j = 0; j < enemyBullets.size(); j++) {
                 if (playerBullets.get(i).rect.intersects(enemyBullets.get(j).rect)) {
@@ -341,7 +345,7 @@ public class GameFrame extends Frame {
         }
     }
 
-    // »­±³¾°·½·¨
+    // ç”»èƒŒæ™¯æ–¹æ³•
     private void paintBackground(Graphics g) {
         g.drawImage(ResourceManager.background, x1, 0, null);
         g.drawImage(ResourceManager.background, x2, 0, null);
@@ -358,13 +362,13 @@ public class GameFrame extends Frame {
 
     private void paintScore(Graphics g) {
         g.setColor(Color.white);
-        g.setFont(new Font("ºÚÌå", Font.PLAIN, 20));
+        g.setFont(new Font("é»‘ä½“", Font.PLAIN, 20));
 
-        g.drawString("µ±Ç°·ÖÊıÎª", 20, 60);
+        g.drawString("å½“å‰åˆ†æ•°ä¸º", 20, 60);
         g.drawString(String.valueOf(score), 140, 60);
     }
 
-    // ¼üÅÌ¼àÌıÀà ±äÏò¹¦ÄÜ
+    // é”®ç›˜ç›‘å¬ç±» å˜å‘åŠŸèƒ½
     class keyListener extends KeyAdapter {
 
         boolean bL = false;
@@ -423,9 +427,12 @@ public class GameFrame extends Frame {
                     break;
 
                 case KeyEvent.VK_3:
-                    if (score >= 100 && ArmArt.level == 0) {
+                    if (score >= 50 && ArmArt.level == 0) {
                         ArmArt.level = 1;
-                        score -= 100;
+                        score -= 50;
+                    } else if (score >= 50 && ArmArt.level == 1) {
+                        ArmArt.level = 2;
+                        score -= 50;
                     }
                     break;
 
@@ -513,7 +520,7 @@ public class GameFrame extends Frame {
 
     }
 
-    // Êó±ê¼àÌıÀà
+    // é¼ æ ‡ç›‘å¬ç±»
     class MouseListener extends MouseAdapter {
 
         @Override

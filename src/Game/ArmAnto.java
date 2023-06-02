@@ -1,7 +1,7 @@
 package Game;
 
 public class ArmAnto {
-    // 帧率计时，不使用Timer是因为新线程难以调控
+    // 甯х巼璁℃椂锛屼笉浣跨敤Timer鏄洜涓烘柊绾跨▼闅句互璋冩帶
     private static int frames = 0;
 
     public static void fire(int x, int y, Dir dir, GameFrame gf) {

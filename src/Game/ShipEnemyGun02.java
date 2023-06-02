@@ -70,7 +70,7 @@ public class ShipEnemyGun02 extends ShipEnemy {
 
         boundsCheck();
 
-        // Ëæ»ú¿ª»ğ
+        // éšæœºå¼€ç«
         if (framesSec >= 4) {
             if (random.nextInt(100) > 80) {
                 this.fire();
@@ -78,7 +78,7 @@ public class ShipEnemyGun02 extends ShipEnemy {
             }
         }
 
-        // Ëæ»ú±äÏò
+        // éšæœºå˜å‘
         if (random.nextInt(100) > 95) {
             randomDir();
         }
@@ -91,7 +91,7 @@ public class ShipEnemyGun02 extends ShipEnemy {
         gf.enemyBullets.add(new BulletGun(this.x + this.WIDTH / 2, this.y + this.HEIGHT / 2, dir, group, gf, false));
     }
 
-    // ÍêÈ«Ëæ»ú
+    // å®Œå…¨éšæœº
     private void randomDir() {
         this.dir = Dir.values()[random.nextInt(4)];
     }

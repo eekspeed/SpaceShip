@@ -6,22 +6,22 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Client {
-    // ±íÃ÷×Ô¼ºÊÇ¿Í»§¶ËµÄ´úºÅ
+    // è¡¨æ˜è‡ªå·±æ˜¯å®¢æˆ·ç«¯çš„ä»£å·
     private static int sign             = 1;
     private static List<Socket> sockets = new ArrayList<>();
 
     public static void main(String[] args) {
 
         try {
-            System.out.println("¿Í»§¶Ë×¼±¸¾ÍĞ÷");
-            Socket socket = new Socket("192.168.0.103", 19624);
-            System.out.println("¿Í»§¶ËÁ¬½Ó³É¹¦");
+            System.out.println("å®¢æˆ·ç«¯å‡†å¤‡å°±ç»ª");
+            Socket socket = new Socket("172.30.244.145", 19624);
+            System.out.println("å®¢æˆ·ç«¯è¿æ¥æˆåŠŸ");
             sockets.add(socket);
-            Socket socket2 = new Socket("192.168.0.103", 19624);
-            System.out.println("µÚ¶şÌ×½Ó×ÖÁ¬½Ó³É¹¦");
+            Socket socket2 = new Socket("172.30.244.145", 19624);
+            System.out.println("ç¬¬äºŒå¥—æ¥å­—è¿æ¥æˆåŠŸ");
             sockets.add(socket2);
-            Socket socket3 = new Socket("192.168.0.103", 19624);
-            System.out.println("µÚÈıÌ×½Ó×ÖÁ¬½Ó³É¹¦");
+            Socket socket3 = new Socket("172.30.244.145", 19624);
+            System.out.println("ç¬¬ä¸‰å¥—æ¥å­—è¿æ¥æˆåŠŸ");
             sockets.add(socket3);
 
             GameFrame frame = new GameFrame(1);

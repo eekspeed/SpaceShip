@@ -1,7 +1,7 @@
 package Game;
 
 public class ShipEnemy extends ShipBase {
-    // »÷ÆÆ·ÖÊý
+    // å‡»ç ´åˆ†æ•°
     public int score;
 
     public ShipEnemy() {

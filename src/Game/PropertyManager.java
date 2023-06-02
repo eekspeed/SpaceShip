@@ -9,7 +9,7 @@ public class PropertyManager {
     private PropertyManager() {
     }
 
-    // ¾²Ì¬´úÂë¿éÖ»Ö´ĞĞÒ»´Î
+    // é™æ€ä»£ç å—åªæ‰§è¡Œä¸€æ¬¡
     static {
         try {
             props.load(PropertyManager.class.getClassLoader().getResourceAsStream("config"));

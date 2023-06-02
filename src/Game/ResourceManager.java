@@ -4,7 +4,7 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 import javax.imageio.ImageIO;
 
-// µ¥Àı²»»áÓÃ¡­¡­
+// å•ä¾‹ä¸ä¼šç”¨â€¦â€¦
 public class ResourceManager {
     public static BufferedImage background;
     public static BufferedImage earth;
@@ -16,31 +16,31 @@ public class ResourceManager {
 
     static{
         try {
-            //±³¾°
+            //èƒŒæ™¯
             background=ImageIO.read(ResourceManager.class.getClassLoader().getResourceAsStream("Image/background.png"));
 
-            //µØÇò
+            //åœ°çƒ
             earth=ImageIO.read(ResourceManager.class.getClassLoader().getResourceAsStream("Image/earth.png"));
             
-            //ÈıÖÖÍæ¼Ò·É´¬
+            //ä¸‰ç§ç©å®¶é£èˆ¹
             playerShip_L=ImageIO.read(ResourceManager.class.getClassLoader().getResourceAsStream("Image/player_L.png"));
             playerShip_n=ImageIO.read(ResourceManager.class.getClassLoader().getResourceAsStream("Image/player_n.png"));
             playerShip_s=ImageIO.read(ResourceManager.class.getClassLoader().getResourceAsStream("Image/player_s.png"));
 
-            //ÎåÖÖµĞ·½·É´¬
+            //äº”ç§æ•Œæ–¹é£èˆ¹
             enemy_boss = ImageIO.read(ResourceManager.class.getClassLoader().getResourceAsStream("Image/enemy_boss.png"));
             enemy_gun01=ImageIO.read(ResourceManager.class.getClassLoader().getResourceAsStream("Image/enemy_gun01.png"));
             enemy_gun02=ImageIO.read(ResourceManager.class.getClassLoader().getResourceAsStream("Image/enemy_gun02.png"));
             enemy_laser=ImageIO.read(ResourceManager.class.getClassLoader().getResourceAsStream("Image/enemy_laser.png"));
             enemy_art=ImageIO.read(ResourceManager.class.getClassLoader().getResourceAsStream("Image/enemy_artillery.png"));
             
-            //ËÄÖÖ×Óµ¯
+            //å››ç§å­å¼¹
             bullet_gun=ImageIO.read(ResourceManager.class.getClassLoader().getResourceAsStream("Image/bullet_gun.png"));
             bullet_laser01=ImageIO.read(ResourceManager.class.getClassLoader().getResourceAsStream("Image/bullet_laser01.png"));
             bullet_laser02=ImageIO.read(ResourceManager.class.getClassLoader().getResourceAsStream("Image/bullet_laser02.png"));
             bullet_art=ImageIO.read(ResourceManager.class.getClassLoader().getResourceAsStream("Image/bullet_artillery.png"));
 
-            //ËÄÖÖ±¬Õ¨
+            //å››ç§çˆ†ç‚¸
             bomb_LL=ImageIO.read(ResourceManager.class.getClassLoader().getResourceAsStream("Image/bomb_LL.png"));
             bomb_L=ImageIO.read(ResourceManager.class.getClassLoader().getResourceAsStream("Image/bomb_L.png"));
             bomb_n=ImageIO.read(ResourceManager.class.getClassLoader().getResourceAsStream("Image/bomb_n.png"));

@@ -31,7 +31,7 @@ public class BulletLaser extends BulletBase {
         }
 
         this.hurt   = 30;
-        this.pierce = 5;   // ´©Í¸Í¬Ñù¾ö¶¨×Óµ¯»¥ÏàÅö×²ÎÊÌâ
+        this.pierce = 5;   // ç©¿é€åŒæ ·å†³å®šå­å¼¹äº’ç›¸ç¢°æ’é—®é¢˜
 
         this.gf = gf;
 

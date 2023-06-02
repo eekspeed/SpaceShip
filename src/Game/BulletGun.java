@@ -25,7 +25,7 @@ public class BulletGun extends BulletBase {
         rect.height = this.HEIGHT;
 
         this.hurt   = 10;
-        this.pierce = 1;   // ´©Í¸Í¬Ñù¾ö¶¨×Óµ¯»¥ÏàÅö×²ÎÊÌâ
+        this.pierce = 1;   // ç©¿é€åŒæ ·å†³å®šå­å¼¹äº’ç›¸ç¢°æ’é—®é¢˜
 
         this.gf = gf;
 

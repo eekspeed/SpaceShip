@@ -23,13 +23,13 @@ public class Sound {
             e.printStackTrace();
         }
         
-        // µÃµ½¸ñÊ½
+        // å¾—åˆ°æ ¼å¼
         format = stream.getFormat();
 
-        // ¸ù¾İ¸ñÊ½ÉèÖÃÒôÆµĞĞĞÅÏ¢
+        // æ ¹æ®æ ¼å¼è®¾ç½®éŸ³é¢‘è¡Œä¿¡æ¯
         info = new DataLine.Info(Clip.class, format);
 
-        // ½¨Á¢ÒôÆµĞĞ
+        // å»ºç«‹éŸ³é¢‘è¡Œ
         try {
             clip = (Clip) AudioSystem.getLine(info);
         } catch (LineUnavailableException ex) {

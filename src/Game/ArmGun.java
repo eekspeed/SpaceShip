@@ -1,10 +1,10 @@
 package Game;
 
 public class ArmGun {
-    // 是否启用
+    // 鏄惁鍚敤
     public static boolean enable = true;
 
-    // 武器等级
+    // 姝﹀櫒绛夌骇
     public static int level = 0;
 
     public static void fire(int x, int y, Dir dir, GameFrame gf) {

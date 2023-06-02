@@ -8,64 +8,64 @@ import java.util.Random;
 public class BulletBase {
     public int SPEED;
 
-    // Í¼Æ¬
+    // å›¾ç‰‡
     public BufferedImage image;
 
     public int WIDTH;
     public int HEIGHT;
 
-    // Åö×²¾ØĞÎ
+    // ç¢°æ’çŸ©å½¢
     Rectangle rect;
 
-    // Î»ÖÃ
+    // ä½ç½®
     public int x, y;
 
-    // ·½Ïò
+    // æ–¹å‘
     public Dir dir;
 
-    // ÉËº¦
+    // ä¼¤å®³
     protected int hurt;
 
-    // ´©Í¸ÄÜÁ¦
+    // ç©¿é€èƒ½åŠ›
     protected int pierce;
 
-    // ÒıÓÃ´°¿Ú
+    // å¼•ç”¨çª—å£
     public GameFrame gf;
 
-    // ÊÇµĞÊÇÓÑ
+    // æ˜¯æ•Œæ˜¯å‹
     public Group group;
 
-    // ÅĞ¶ÏÉúËÀ
+    // åˆ¤æ–­ç”Ÿæ­»
     public boolean living;
 
-    // ÓÃÓÚ´«ÊäÊı¾İµÄÀàĞÍ´úºÅ
+    // ç”¨äºä¼ è¾“æ•°æ®çš„ç±»å‹ä»£å·
     public String code;
 
-    // ÅĞ¶Ï¸Ã×Óµ¯´æÔÚĞÅÏ¢ÊÇ·ñÒÑ¾­·¢ËÍ
+    // åˆ¤æ–­è¯¥å­å¼¹å­˜åœ¨ä¿¡æ¯æ˜¯å¦å·²ç»å‘é€
     public boolean havesend;
 
-    // ×Óµ¯×î´óÆ«×ª½Ç¶È
+    // å­å¼¹æœ€å¤§åè½¬è§’åº¦
     public double maxAngle;
 
-    // ×Óµ¯µ±Ç°Æ«×ª½Ç¶È
+    // å­å¼¹å½“å‰åè½¬è§’åº¦
     public double angle;
 
-    // Éä³Ì
+    // å°„ç¨‹
     public int range;
 
-    // ×îÖÕÂäµã
+    // æœ€ç»ˆè½ç‚¹
     public int FX, FY;
 
-    // ÔÚ·ÖËÙ¶È²»×ã1Ê±ÓÃÓÚÀÛ»ıµÄÊı×Ö
+    // åœ¨åˆ†é€Ÿåº¦ä¸è¶³1æ—¶ç”¨äºç´¯ç§¯çš„æ•°å­—
     public double tx, ty;
 
-    // ÊÇ·ñ¿ªÊ¼ÒÆ¶¯
+    // æ˜¯å¦å¼€å§‹ç§»åŠ¨
     public boolean moving;
 
-    // Ëæ»úÊı
+    // éšæœºæ•°
     public Random random = new Random();
 
-    // Ëæ»úÊı
+    // éšæœºæ•°
     public int r;
 
     public BulletBase() {
@@ -234,7 +234,7 @@ public class BulletBase {
         }
     }
 
-    // Óë·É´¬Åö×²¼ì²â
+    // ä¸é£èˆ¹ç¢°æ’æ£€æµ‹
     public void collideWith(ShipPlayer ship) {
 
         if (this.rect.intersects(ship.rect)) {
@@ -300,7 +300,7 @@ public class BulletBase {
         this.living = false;
     }
 
-    // ¸ù¾İ·½ÏòÈ·¶¨ĞèÒªÒÆ¶¯µ½µÄxyÖµ
+    // æ ¹æ®æ–¹å‘ç¡®å®šéœ€è¦ç§»åŠ¨åˆ°çš„xyå€¼
     public void point() {
         if (this.dir == Dir.R) {
 
@@ -359,7 +359,7 @@ public class BulletBase {
 
     }
 
-    // ±ß½ç¼ì²é
+    // è¾¹ç•Œæ£€æŸ¥
     public void boundsCheck() {
         if (this.x < 0 || this.y < 0 || this.x > GameFrame.GAME_WIDTH || this.y > GameFrame.GAME_HEIGHT) {
             this.living = false;

@@ -58,7 +58,7 @@ public class EnemyRefresh extends TimerTask {
             gun02++;
         }
 
-        // µĞ»ú³¬¹ı°Ë¸öĞİÏ¢Ò»ÏÂ
+        // æ•Œæœºè¶…è¿‡å…«ä¸ªä¼‘æ¯ä¸€ä¸‹
         if (gf.enemyShips.size() >= 8) {
             try {
                 Thread.sleep(5000);
@@ -93,7 +93,7 @@ public class EnemyRefresh extends TimerTask {
             boss++;
         }
 
-        // µĞ»ú³¬¹ı12¸öÖ±½ÓÔİÍ£Ë¢ĞÂ
+        // æ•Œæœºè¶…è¿‡12ä¸ªç›´æ¥æš‚åœåˆ·æ–°
         while (gf.enemyShips.size() >= 12) {
             try {
                 Thread.sleep(5000);
@@ -102,7 +102,7 @@ public class EnemyRefresh extends TimerTask {
             }
         }
 
-        // »÷É±bossÇÒÖæÓòÇå¿ÕËµÃ÷ÓÎÏ·Ê¤Àû
+        // å‡»æ€bossä¸”å®™åŸŸæ¸…ç©ºè¯´æ˜æ¸¸æˆèƒœåˆ©
         if (boss == maxBoss && gf.enemyShips.size() == 0) {
             gf.X = 2;
         }

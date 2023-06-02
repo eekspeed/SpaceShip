@@ -91,7 +91,7 @@ public class ShipEnemyBoss extends ShipEnemy {
 
         boundsCheck();
 
-        // ×Ô¶¯¿ª»ð
+        // è‡ªåŠ¨å¼€ç«
         if (random.nextInt(100) > 90) {
             for (int i = 0; i < 5; i++) {
                 gf.enemyBullets
@@ -110,7 +110,7 @@ public class ShipEnemyBoss extends ShipEnemy {
             }
         }
 
-        // Ëæ»ú¿ª»ð
+        // éšæœºå¼€ç«
         if (framesMain >= 10) {
             if (random.nextInt(100) > 90) {
                 this.fire();
@@ -118,7 +118,7 @@ public class ShipEnemyBoss extends ShipEnemy {
             }
         }
 
-        // Ëæ»ú±äÏò
+        // éšæœºå˜å‘
         if (random.nextInt(100) > 95) {
             randomDir();
         }
@@ -131,7 +131,7 @@ public class ShipEnemyBoss extends ShipEnemy {
         gf.enemyBullets.add(new BulletArt(this.x + this.WIDTH / 2, this.y + this.HEIGHT / 2, dir, group, gf, false));
     }
 
-    // ¶þ+4/4³É¼¸ÂÊÍù×ó
+    // äºŒ+4/4æˆå‡ çŽ‡å¾€å·¦
     private void randomDir() {
         if (random.nextInt(5) > 3) {
             this.dir = Dir.L;

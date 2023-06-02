@@ -1,7 +1,7 @@
 package Game;
 
 public class ArmEngine {
-    // ÎäÆ÷µÈ¼¶
+    // æ­¦å™¨ç­‰çº§
     public static int level = 0;
 
     public static int getEnergy() {

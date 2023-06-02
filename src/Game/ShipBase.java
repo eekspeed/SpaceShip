@@ -4,64 +4,64 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 
 public class ShipBase {
-    // Í¼Æ¬
+    // å›¾ç‰‡
     public BufferedImage image;
     public BufferedImage imageBomb;
 
-    // Î»ÖÃ
+    // ä½ç½®
     public int x, y;
 
-    // ÔË¶¯·½Ïò
+    // è¿åŠ¨æ–¹å‘
     public Dir dir;
 
-    // ËÙ¶È
+    // é€Ÿåº¦
     public int speed;
 
-    // »¤¶ÜÖµ
+    // æŠ¤ç›¾å€¼
     protected int shieldValue;
 
-    // ×î´ó»¤¶ÜÖµ
+    // æœ€å¤§æŠ¤ç›¾å€¼
     protected int maxShieldValue;
 
-    // ×°¼×ºñ¶È£¨¼õÉË£¬×è°­´©Í¸£©
+    // è£…ç”²åšåº¦ï¼ˆå‡ä¼¤ï¼Œé˜»ç¢ç©¿é€ï¼‰
     protected int Armorthick;
 
-    // ´¬ÌåÖµ£¨ÑªÁ¿£©
+    // èˆ¹ä½“å€¼ï¼ˆè¡€é‡ï¼‰
     protected int hp;
 
-    // ×î´ó´¬ÌåÖµ
+    // æœ€å¤§èˆ¹ä½“å€¼
     protected int maxHp;
 
-    // ³¤¶È¸ß¶È
+    // é•¿åº¦é«˜åº¦
     public int WIDTH;
     public int HEIGHT;
 
-    // Åö×²¾ØĞÎ
+    // ç¢°æ’çŸ©å½¢
     public Rectangle rect;
 
-    // ³õÊ¼Ä¬ÈÏÒÆ¶¯
+    // åˆå§‹é»˜è®¤ç§»åŠ¨
     public boolean moving;
 
-    // ÅĞ¶ÏÉúËÀ
+    // åˆ¤æ–­ç”Ÿæ­»
     public boolean living;
 
-    // ÊÇµĞÊÇÓÑ
+    // æ˜¯æ•Œæ˜¯å‹
     public Group group;
 
-    // ÒıÓÃ´°¿Ú
+    // å¼•ç”¨çª—å£
     protected GameFrame gf;
 
-    // Ö¡Êı
+    // å¸§æ•°
     protected int framesSec;
     protected int framesMain;
 
-    // ÓÃÓÚ´«ÊäÊı¾İµÄÀàĞÍ´úºÅ
+    // ç”¨äºä¼ è¾“æ•°æ®çš„ç±»å‹ä»£å·
     public String code;
 
-    // ×ÔÉí´úºÅ£¨ÓÃÓÚËÀÍöĞÅÏ¢É¾³ı£©
+    // è‡ªèº«ä»£å·ï¼ˆç”¨äºæ­»äº¡ä¿¡æ¯åˆ é™¤ï¼‰
     public int dieCode;
 
-    // ÅĞ¶Ï¸Ã´¬´æÔÚĞÅÏ¢ÊÇ·ñÒÑ¾­·¢ËÍ
+    // åˆ¤æ–­è¯¥èˆ¹å­˜åœ¨ä¿¡æ¯æ˜¯å¦å·²ç»å‘é€
     public boolean havesend;
 
     public ShipBase() {

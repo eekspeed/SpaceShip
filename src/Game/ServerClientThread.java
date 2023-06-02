@@ -13,7 +13,7 @@ public class ServerClientThread implements Runnable {
     private List<InputStream> inputStreams = new ArrayList<>();
     private List<OutputStream> outputStreams = new ArrayList<>();
 
-    // ´Ó×Ö½ÚÁ÷µ½×Ö·ûÁ÷
+    // ä»å­—èŠ‚æµåˆ°å­—ç¬¦æµ
     private List<InputStreamReader> inputStreamReaders = new ArrayList<>();
     private List<OutputStreamWriter> outputStreamWriters = new ArrayList<>();
 
@@ -31,19 +31,19 @@ public class ServerClientThread implements Runnable {
     @Override
     public void run() {
 
-        System.out.println("Ïß³ÌÆô¶¯");
+        System.out.println("çº¿ç¨‹å¯åŠ¨");
 
         for(int i=0; i<sockets.size();i++){
             setIOStream(sockets.get(i));
         }
 
-        // ´«ÊäË«·½Ö÷½¢ĞÅÏ¢
+        // ä¼ è¾“åŒæ–¹ä¸»èˆ°ä¿¡æ¯
         new Thread(new PlayerShipThread(gf, bufferedReaders.get(0), bufferedWriters.get(0),sign)).start();
 
-        // ´«ÊäµĞ·½½¢´¬ĞÅÏ¢
+        // ä¼ è¾“æ•Œæ–¹èˆ°èˆ¹ä¿¡æ¯
         new Thread(new EnemyShipDataThread(gf, bufferedReaders.get(1), bufferedWriters.get(1),sign)).start();
         
-        // ´«Êä×Óµ¯Óë±¬Õ¨ĞÅÏ¢
+        // ä¼ è¾“å­å¼¹ä¸çˆ†ç‚¸ä¿¡æ¯
         new Thread(new BulletBombDataThread(gf, bufferedReaders.get(2), bufferedWriters.get(2),sign)).start();
     }
 

@@ -197,7 +197,7 @@ public class BulletBombDataThread implements Runnable {
         }
     }
 
-    // тзмФ╪рвс╣╞пео╒жпох╪Л╡БфДкШё╛н╢╪Л╡Б╣╫╣д╬мйгжВезвс╣╞пео╒
+    // Е°╗Г▌╘Е╝╤Е╜░Е╪╧Д©║Ф│╞Д╦╜Е┘┬Фё─Ф╣▀Е┘╤Д╩√О╪▄Ф°╙Фё─Ф╣▀Е┬╟Г └Е╟╠Ф≤╞Д╦╩Г┌╝Е╜░Е╪╧Д©║Ф│╞
     private void readPlayerBullets() {
 
         for (int i = 0; i < dataSplit.length; i += 4) {

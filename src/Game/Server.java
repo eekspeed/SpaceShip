@@ -8,11 +8,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Server {
-    // ±íÃ÷×Ô¼ºÊÇÖ÷»úµÄ´úºÅ
+    // è¡¨æ˜è‡ªå·±æ˜¯ä¸»æœºçš„ä»£å·
     private static int sign = 0;
     private static List<Socket> sockets = new ArrayList<>();
     public static void main(String[] args) {
-        System.out.println("·şÎñÆ÷×¼±¸¾ÍĞ÷");
+        System.out.println("æœåŠ¡å™¨å‡†å¤‡å°±ç»ª");
         try {
             ServerSocket serverSocket = new ServerSocket(19624);
             GameFrame frame = new GameFrame(0);
@@ -21,13 +21,13 @@ public class Server {
 
             while (true) {
                 Socket socket = serverSocket.accept();
-                System.out.println("¿Í»§¶ËÁ¬½ÓÍê³É");
+                System.out.println("å®¢æˆ·ç«¯è¿æ¥å®Œæˆ");
                 sockets.add(socket);
                 Socket socket2 = serverSocket.accept();
-                System.out.println("µÚ¶şÌ×½Ó×ÖÁ¬½ÓÍê³É");
+                System.out.println("ç¬¬äºŒå¥—æ¥å­—è¿æ¥å®Œæˆ");
                 sockets.add(socket2);
                 Socket socket3 = serverSocket.accept();
-                System.out.println("µÚÈıÌ×½Ó×ÖÁ¬½ÓÍê³É");
+                System.out.println("ç¬¬ä¸‰å¥—æ¥å­—è¿æ¥å®Œæˆ");
                 sockets.add(socket3);
 
                 frame.secPlayerShips.add(new ShipPlayerS(-200, 200, frame,0,false,false));

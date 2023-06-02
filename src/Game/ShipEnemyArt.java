@@ -71,7 +71,7 @@ public class ShipEnemyArt extends ShipEnemy {
 
         boundsCheck();
 
-        // ×Ô¶¯¿ª»ð
+        // è‡ªåŠ¨å¼€ç«
 
         if (random.nextInt(100) > 95) {
             for (int i = 0; i < 4; i++) {
@@ -80,7 +80,7 @@ public class ShipEnemyArt extends ShipEnemy {
             }
         }
 
-        // Ëæ»ú¿ª»ð
+        // éšæœºå¼€ç«
         if (framesSec >= 80) {
             if (random.nextInt(100) > 90) {
                 this.fire();
@@ -88,7 +88,7 @@ public class ShipEnemyArt extends ShipEnemy {
             }
         }
 
-        // Ëæ»ú±äÏò
+        // éšæœºå˜å‘
         if (random.nextInt(100) > 95) {
             randomDir();
         }
@@ -102,7 +102,7 @@ public class ShipEnemyArt extends ShipEnemy {
 
     }
 
-    // ¶þ+4/4³É¼¸ÂÊÍù×ó
+    // äºŒ+4/4æˆå‡ çŽ‡å¾€å·¦
     private void randomDir() {
         if (random.nextInt(5) > 3) {
             this.dir = Dir.L;

@@ -102,7 +102,7 @@ public class EnemyShipDataThread implements Runnable {
 
     }
 
-    // ·â×°µĞ·½½¢´¬ËÀÍöĞÅÏ¢
+    // å°è£…æ•Œæ–¹èˆ°èˆ¹æ­»äº¡ä¿¡æ¯
     private void addDieData() {
         temp = "";
 
@@ -122,7 +122,7 @@ public class EnemyShipDataThread implements Runnable {
 
     }
 
-    // ·â×°µĞ·½½¢´¬Éú³ÉĞÅÏ¢ÓëËÀÍö´úºÅ
+    // å°è£…æ•Œæ–¹èˆ°èˆ¹ç”Ÿæˆä¿¡æ¯ä¸æ­»äº¡ä»£å·
     private void addCreateData() {
         temp = "";
 
@@ -146,7 +146,7 @@ public class EnemyShipDataThread implements Runnable {
 
     }
 
-    // ·â×°µĞ·½½¢´¬ËÀÍö´úºÅ£¬Î»ÖÃ¡¢»¤¶Ü¡¢ÑªÁ¿ĞÅÏ¢
+    // å°è£…æ•Œæ–¹èˆ°èˆ¹æ­»äº¡ä»£å·ï¼Œä½ç½®ã€æŠ¤ç›¾ã€è¡€é‡ä¿¡æ¯
     private void addPositionData() {
         temp = "";
 
@@ -184,7 +184,7 @@ public class EnemyShipDataThread implements Runnable {
         setPositionData();
     }
 
-    // ÉèÖÃµĞ·½½¢´¬ËÀÍöĞÅÏ¢
+    // è®¾ç½®æ•Œæ–¹èˆ°èˆ¹æ­»äº¡ä¿¡æ¯
     private void setDieData() {
 
         if (dataSplit[0].length() == 1) {
@@ -203,7 +203,7 @@ public class EnemyShipDataThread implements Runnable {
         }
     }
 
-    // ÉèÖÃµĞ·½½¢´¬Éú³ÉĞÅÏ¢ÓëËÀÍö´úºÅ
+    // è®¾ç½®æ•Œæ–¹èˆ°èˆ¹ç”Ÿæˆä¿¡æ¯ä¸æ­»äº¡ä»£å·
     private void setCreateData() {
         if (dataSplit[1].length() == 1) {
             return;
@@ -241,7 +241,7 @@ public class EnemyShipDataThread implements Runnable {
 
     }
 
-    // ¸ù¾İËÀÍö´úºÅÉèÖÃµĞ·½½¢´¬Î»ÖÃ¡¢»¤¶Ü¡¢ÑªÁ¿ĞÅÏ¢
+    // æ ¹æ®æ­»äº¡ä»£å·è®¾ç½®æ•Œæ–¹èˆ°èˆ¹ä½ç½®ã€æŠ¤ç›¾ã€è¡€é‡ä¿¡æ¯
     private void setPositionData() {
         if (dataSplit[2].length() == 1) {
             return;
